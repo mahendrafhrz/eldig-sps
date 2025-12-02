@@ -1,0 +1,10 @@
+C:\Projects\InhalerMultiSensorSim\new\SPS\MedEvacFsmGui\bin\Debug\MedEvacFsmGui.exe.config
+C:\Projects\InhalerMultiSensorSim\new\SPS\MedEvacFsmGui\bin\Debug\MedEvacFsmGui.exe
+C:\Projects\InhalerMultiSensorSim\new\SPS\MedEvacFsmGui\bin\Debug\MedEvacFsmGui.pdb
+C:\Projects\InhalerMultiSensorSim\new\SPS\MedEvacFsmGui\obj\Debug\MedEvacFsmGui.csproj.AssemblyReference.cache
+C:\Projects\InhalerMultiSensorSim\new\SPS\MedEvacFsmGui\obj\Debug\MedEvacFsmGui.Properties.Resources.resources
+C:\Projects\InhalerMultiSensorSim\new\SPS\MedEvacFsmGui\obj\Debug\MedEvacFsmGui.csproj.GenerateResource.cache
+C:\Projects\InhalerMultiSensorSim\new\SPS\MedEvacFsmGui\obj\Debug\MedEvacFsmGui.csproj.CoreCompileInputs.cache
+C:\Projects\InhalerMultiSensorSim\new\SPS\MedEvacFsmGui\obj\Debug\MedEvacFsmGui.exe
+C:\Projects\InhalerMultiSensorSim\new\SPS\MedEvacFsmGui\obj\Debug\MedEvacFsmGui.pdb
+C:\Projects\InhalerMultiSensorSim\new\SPS\MedEvacFsmGui\obj\Debug\MedEvacFsmGui.exe.config
