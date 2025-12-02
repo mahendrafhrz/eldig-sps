@@ -1,0 +1,3037 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>HelixToolkit.Geometry</name>
+    </assembly>
+    <members>
+        <member name="T:HelixToolkit.Geometry.BoxFaces">
+            <summary>
+            Box face enumeration.
+            </summary>
+        </member>
+        <member name="F:HelixToolkit.Geometry.BoxFaces.PositiveZ">
+            <summary>
+            The top.
+            </summary>
+        </member>
+        <member name="F:HelixToolkit.Geometry.BoxFaces.Top">
+            <summary>
+            The top.
+            </summary>
+        </member>
+        <member name="F:HelixToolkit.Geometry.BoxFaces.NegativeZ">
+            <summary>
+            The bottom.
+            </summary>
+        </member>
+        <member name="F:HelixToolkit.Geometry.BoxFaces.Bottom">
+            <summary>
+            The bottom.
+            </summary>
+        </member>
+        <member name="F:HelixToolkit.Geometry.BoxFaces.NegativeY">
+            <summary>
+            The left side.
+            </summary>
+        </member>
+        <member name="F:HelixToolkit.Geometry.BoxFaces.Left">
+            <summary>
+            The left side.
+            </summary>
+        </member>
+        <member name="F:HelixToolkit.Geometry.BoxFaces.PositiveY">
+            <summary>
+            The right side.
+            </summary>
+        </member>
+        <member name="F:HelixToolkit.Geometry.BoxFaces.Right">
+            <summary>
+            The right side.
+            </summary>
+        </member>
+        <member name="F:HelixToolkit.Geometry.BoxFaces.PositiveX">
+            <summary>
+            The front side.
+            </summary>
+        </member>
+        <member name="F:HelixToolkit.Geometry.BoxFaces.Front">
+            <summary>
+            The front side.
+            </summary>
+        </member>
+        <member name="F:HelixToolkit.Geometry.BoxFaces.NegativeX">
+            <summary>
+            The back side.
+            </summary>
+        </member>
+        <member name="F:HelixToolkit.Geometry.BoxFaces.Back">
+            <summary>
+            The back side.
+            </summary>
+        </member>
+        <member name="F:HelixToolkit.Geometry.BoxFaces.All">
+            <summary>
+            All sides.
+            </summary>
+        </member>
+        <member name="T:HelixToolkit.Geometry.ContourHelper">
+            <summary>
+            Provides functionality to calculate a contour slice through a 3 vertex facet.(Modified from HelixToolkit.Wpf version)
+            </summary>
+            <remarks>
+            See <a href="http://paulbourke.net/papers/conrec/">CONREC</a> for further information.
+            </remarks>
+        </member>
+        <member name="F:HelixToolkit.Geometry.ContourHelper.ResultIndices">
+            <summary>
+            Provides the indices for the various <see cref="T:HelixToolkit.Geometry.ContourHelper.ContourFacetResult"/> cases.
+            </summary>
+        </member>
+        <member name="F:HelixToolkit.Geometry.ContourHelper.a">
+            <summary>
+            The parameter 'a' of the plane equation.
+            </summary>
+        </member>
+        <member name="F:HelixToolkit.Geometry.ContourHelper.b">
+            <summary>
+            The parameter 'b' of the plane equation.
+            </summary>
+        </member>
+        <member name="F:HelixToolkit.Geometry.ContourHelper.c">
+            <summary>
+            The parameter 'c' of the plane equation.
+            </summary>
+        </member>
+        <member name="F:HelixToolkit.Geometry.ContourHelper.d">
+            <summary>
+            The parameter 'd' of the plane equation.
+            </summary>
+        </member>
+        <member name="F:HelixToolkit.Geometry.ContourHelper.sides">
+            <summary>
+            The sides.
+            </summary>
+        </member>
+        <member name="F:HelixToolkit.Geometry.ContourHelper.indices">
+            <summary>
+            The indices.
+            </summary>
+        </member>
+        <member name="F:HelixToolkit.Geometry.ContourHelper.meshPositions">
+            <summary>
+            The original mesh positions.
+            </summary>
+        </member>
+        <member name="F:HelixToolkit.Geometry.ContourHelper.meshNormals">
+            <summary>
+            The original mesh normal vectors.
+            </summary>
+        </member>
+        <member name="F:HelixToolkit.Geometry.ContourHelper.meshTextureCoordinates">
+            <summary>
+            The original mesh texture coordinates.
+            </summary>
+        </member>
+        <member name="F:HelixToolkit.Geometry.ContourHelper.points">
+            <summary>
+            The points.
+            </summary>
+        </member>
+        <member name="F:HelixToolkit.Geometry.ContourHelper.normals">
+            <summary>
+            The normal vectors.
+            </summary>
+        </member>
+        <member name="F:HelixToolkit.Geometry.ContourHelper.textures">
+            <summary>
+            The texture coordinates.
+            </summary>
+        </member>
+        <member name="F:HelixToolkit.Geometry.ContourHelper.positionCount">
+            <summary>
+            The position count.
+            </summary>
+        </member>
+        <member name="M:HelixToolkit.Geometry.ContourHelper.#ctor(System.Numerics.Plane,HelixToolkit.Geometry.MeshGeometry3D)">
+            <summary>
+            Initializes a new instance of the <see cref="T:HelixToolkit.Geometry.ContourHelper" /> class.
+            </summary>
+            <param name="plane">The plane</param>
+            <param name="originalMesh">The original mesh</param>
+        </member>
+        <member name="M:HelixToolkit.Geometry.ContourHelper.#ctor(System.Numerics.Vector3,System.Numerics.Vector3,HelixToolkit.Geometry.MeshGeometry3D)">
+            <summary>
+            Initializes a new instance of the <see cref="T:HelixToolkit.Geometry.ContourHelper" /> class.
+            </summary>
+            <param name="planeOrigin">The plane origin.</param>
+            <param name="planeNormal">The plane normal.</param>
+            <param name="originalMesh">The original mesh.</param>
+        </member>
+        <member name="T:HelixToolkit.Geometry.ContourHelper.ContourFacetResult">
+            <summary>
+            The contour facet result.
+            </summary>
+        </member>
+        <member name="F:HelixToolkit.Geometry.ContourHelper.ContourFacetResult.None">
+            <summary>
+            All of the points fall above the contour plane.
+            </summary>
+        </member>
+        <member name="F:HelixToolkit.Geometry.ContourHelper.ContourFacetResult.ZeroOnly">
+            <summary>
+            Only the 0th point falls below the contour plane.
+            </summary>
+        </member>
+        <member name="F:HelixToolkit.Geometry.ContourHelper.ContourFacetResult.OneAndTwo">
+            <summary>
+            The 1st and 2nd points fall below the contour plane.
+            </summary>
+        </member>
+        <member name="F:HelixToolkit.Geometry.ContourHelper.ContourFacetResult.OneOnly">
+            <summary>
+            Only the 1st point falls below the contour plane.
+            </summary>
+        </member>
+        <member name="F:HelixToolkit.Geometry.ContourHelper.ContourFacetResult.ZeroAndTwo">
+            <summary>
+            The 0th and 2nd points fall below the contour plane.
+            </summary>
+        </member>
+        <member name="F:HelixToolkit.Geometry.ContourHelper.ContourFacetResult.TwoOnly">
+            <summary>
+            Only the second point falls below the contour plane.
+            </summary>
+        </member>
+        <member name="F:HelixToolkit.Geometry.ContourHelper.ContourFacetResult.ZeroAndOne">
+            <summary>
+            The 0th and 1st points fall below the contour plane.
+            </summary>
+        </member>
+        <member name="F:HelixToolkit.Geometry.ContourHelper.ContourFacetResult.All">
+            <summary>
+            All of the points fall below the contour plane.
+            </summary>
+        </member>
+        <member name="M:HelixToolkit.Geometry.ContourHelper.ContourFacet(System.Int32,System.Int32,System.Int32,System.Numerics.Vector3[]@,System.Numerics.Vector3[]@,System.Numerics.Vector2[]@,System.Int32[]@)">
+            <summary>
+            Create a contour slice through a 3 vertex facet.
+            </summary>
+            <param name="index0">The 0th point index.</param>
+            <param name="index1">The 1st point index.</param>
+            <param name="index2">The 2nd point index.</param>
+            <param name="newPositions">Any new positions that are created, when the contour plane slices through the vertex.</param>
+            <param name="newNormals">Any new normal vectors that are created, when the contour plane slices through the vertex.</param>
+            <param name="newTextureCoordinates">Any new texture coordinates that are created, when the contour plane slices through the vertex.</param>
+            <param name="triangleIndices">Triangle indices for the triangle(s) above the plane.</param>
+        </member>
+        <member name="M:HelixToolkit.Geometry.ContourHelper.CalculatePoint(System.Single,System.Single,System.Single,System.Single)">
+            <summary>
+            Calculates a new point coordinate.
+            </summary>
+            <param name="firstPoint">
+            The first point coordinate.
+            </param>
+            <param name="secondPoint">
+            The second point coordinate.
+            </param>
+            <param name="firstSide">
+            The first side.
+            </param>
+            <param name="secondSide">
+            The second side.
+            </param>
+            <returns>The new coordinate.</returns>
+        </member>
+        <member name="M:HelixToolkit.Geometry.ContourHelper.GetContourFacet">
+            <summary>
+            Gets the <see cref="T:HelixToolkit.Geometry.ContourHelper.ContourFacetResult"/> for the current facet.
+            </summary>
+            <returns>a facet result.</returns>
+        </member>
+        <member name="M:HelixToolkit.Geometry.ContourHelper.SetData(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Initializes the facet data and calculates the <see cref="F:HelixToolkit.Geometry.ContourHelper.sides"/> values from the specified triangle indices. 
+            </summary>
+            <param name="index0">The first triangle index of the facet.</param>
+            <param name="index1">The second triangle index of the facet.</param>
+            <param name="index2">The third triangle index of the facet.</param>
+        </member>
+        <member name="M:HelixToolkit.Geometry.ContourHelper.CreateNewPosition(System.Int32,System.Int32)">
+            <summary>
+            Calculates the position at the plane intersection for the side specified by two triangle indices.
+            </summary>
+            <param name="index0">The first index.</param>
+            <param name="index1">The second index.</param>
+            <returns>The interpolated position.</returns>
+        </member>
+        <member name="M:HelixToolkit.Geometry.ContourHelper.CreateNewNormal(System.Int32,System.Int32)">
+            <summary>
+            Calculates the normal at the plane intersection for the side specified by two triangle indices.
+            </summary>
+            <param name="index0">The first index.</param>
+            <param name="index1">The second index.</param>
+            <returns>The interpolated vector.</returns>
+        </member>
+        <member name="M:HelixToolkit.Geometry.ContourHelper.CreateNewTexture(System.Int32,System.Int32)">
+            <summary>
+            Calculates the texture coordinate at the plane intersection for the side specified by two triangle indices.
+            </summary>
+            <param name="index0">The first index.</param>
+            <param name="index1">The second index.</param>
+            <returns>The interpolated texture coordinate.</returns>
+        </member>
+        <member name="M:HelixToolkit.Geometry.ContourHelper.IsSideAlone(System.Int32)">
+            <summary>
+            Determines whether the vertex at the specified index is at the opposite side of the other two vertices.
+            </summary>
+            <param name="index">The index.</param>
+            <returns><c>true</c> if the vertex is on its own side.</returns>
+        </member>
+        <member name="M:HelixToolkit.Geometry.ContourHelper.AllSidesBelowContour">
+            <summary>
+            Determines whether all sides of the facet are below the contour.
+            </summary>
+            <returns><c>true</c> if all sides are below the contour.</returns>
+        </member>
+        <member name="T:HelixToolkit.Geometry.CuttingEarsTriangulator">
+            <summary>
+            Provides a cutting ears triangulation algorithm for simple polygons with no holes. O(n^2)
+            </summary>
+            <remarks>
+            Based on <a href="http://www.flipcode.com/archives/Efficient_Polygon_Triangulation.shtml">code</a>
+            References
+            <a href="http://en.wikipedia.org/wiki/Polygon_triangulation"></a>
+            <a href="http://computacion.cs.cinvestav.mx/~anzures/geom/triangulation.php"></a>
+            <a href="http://www.codeproject.com/KB/recipes/cspolygontriangulation.aspx"></a>
+            </remarks>
+        </member>
+        <member name="F:HelixToolkit.Geometry.CuttingEarsTriangulator.Epsilon">
+            <summary>
+            The epsilon.
+            </summary>
+        </member>
+        <member name="M:HelixToolkit.Geometry.CuttingEarsTriangulator.Triangulate(System.Collections.Generic.IList{System.Numerics.Vector2})">
+            <summary>
+            Triangulate a polygon using the cutting ears algorithm.
+            </summary>
+            <remarks>
+            The algorithm does not support holes.
+            </remarks>
+            <param name="contour">
+            the polygon contour
+            </param>
+            <returns>
+            collection of triangle points
+            </returns>
+        </member>
+        <member name="M:HelixToolkit.Geometry.CuttingEarsTriangulator.Area(System.Collections.Generic.IList{System.Numerics.Vector2})">
+            <summary>
+            Calculates the area.
+            </summary>
+            <param name="contour">The contour.</param>
+            <returns>The area.</returns>
+        </member>
+        <member name="M:HelixToolkit.Geometry.CuttingEarsTriangulator.InsideTriangle(System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single)">
+            <summary>
+            Decide if point (Px,Py) is inside triangle defined by (Ax,Ay) (Bx,By) (Cx,Cy).
+            </summary>
+            <param name="Ax">
+            The ax.
+            </param>
+            <param name="Ay">
+            The ay.
+            </param>
+            <param name="Bx">
+            The bx.
+            </param>
+            <param name="By">
+            The by.
+            </param>
+            <param name="Cx">
+            The cx.
+            </param>
+            <param name="Cy">
+            The cy.
+            </param>
+            <param name="Px">
+            The px.
+            </param>
+            <param name="Py">
+            The py.
+            </param>
+            <returns>
+            The inside triangle.
+            </returns>
+        </member>
+        <member name="M:HelixToolkit.Geometry.CuttingEarsTriangulator.Snip(System.Collections.Generic.IList{System.Numerics.Vector2},System.Int32,System.Int32,System.Int32,System.Int32,System.Int32[])">
+            <summary>
+            The snip.
+            </summary>
+            <param name="contour">The contour.</param>
+            <param name="u">The u.</param>
+            <param name="v">The v.</param>
+            <param name="w">The w.</param>
+            <param name="n">The n.</param>
+            <param name="V">The v.</param>
+            <returns>The snip.</returns>
+        </member>
+        <member name="T:HelixToolkit.Geometry.MeshBuilder">
+            <summary>
+            Builds MeshGeometry3D objects.
+            </summary>
+            <remarks>
+            Performance tips for MeshGeometry3D (http://msdn.microsoft.com/en-us/library/bb613553.aspx)
+            <para>
+            High impact:
+            Mesh animation—changing the individual vertices of a mesh on a per-frame basis—is not always efficient in
+            Windows Presentation Foundation (WPF). To minimize the performance impact of change notifications when
+            each vertex is modified, detach the mesh from the visual tree before performing per-vertex modification.
+            Once the mesh has been modified, reattach it to the visual tree. Also, try to minimize the size of meshes
+            that will be animated in this way.
+            </para>
+            <para>
+            Medium impact:
+            When a mesh is defined as abutting triangles with shared vertices and those vertices have the same position,
+            normal, and texture coordinates, define each shared vertex only once and then define your triangles by
+            index with TriangleIndices.
+            </para>
+            <para>
+            Low impact:
+            To minimize the construction time of large collections in Windows Presentation Foundation (WPF),
+            such as a MeshGeometry3D’s Positions, Normals, TextureCoordinates, and TriangleIndices, pre-size
+            the collections before value population. If possible, pass the collections’ constructors prepopulated
+            data structures such as arrays or Lists.
+            </para>
+            </remarks>
+        </member>
+        <member name="F:HelixToolkit.Geometry.MeshBuilder.AllCurvesShouldHaveTheSameNumberOfPoints">
+            <summary>
+            'All curves should have the same number of points' exception message.
+            </summary>
+        </member>
+        <member name="F:HelixToolkit.Geometry.MeshBuilder.SourceMeshNormalsShouldNotBeNull">
+            <summary>
+            'Source mesh normals should not be null' exception message.
+            </summary>
+        </member>
+        <member name="F:HelixToolkit.Geometry.MeshBuilder.SourceMeshTextureCoordinatesShouldNotBeNull">
+            <summary>
+            'Source mesh texture coordinates should not be null' exception message.
+            </summary>
+        </member>
+        <member name="F:HelixToolkit.Geometry.MeshBuilder.WrongNumberOfScales">
+            <summary>
+            'Wrong number of scales' exception message.
+            </summary>
+        </member>
+        <member name="F:HelixToolkit.Geometry.MeshBuilder.WrongNumberOfPositions">
+            <summary>
+            'Wrong number of positions' exception message.
+            </summary>
+        </member>
+        <member name="F:HelixToolkit.Geometry.MeshBuilder.WrongNumberOfNormals">
+            <summary>
+            'Wrong number of normals' exception message.
+            </summary>
+        </member>
+        <member name="F:HelixToolkit.Geometry.MeshBuilder.WrongNumberOfTextureCoordinates">
+            <summary>
+            'Wrong number of texture coordinates' exception message.
+            </summary>
+        </member>
+        <member name="F:HelixToolkit.Geometry.MeshBuilder.WrongNumberOfAngles">
+            <summary>
+            'Wrong number of angles' exception message.
+            </summary>
+        </member>
+        <member name="F:HelixToolkit.Geometry.MeshBuilder.WrongNumberOfDivisions">
+            <summary>
+            'Wrong number of divisions' exception message.
+            </summary>
+        </member>
+        <member name="F:HelixToolkit.Geometry.MeshBuilder.CircleCache">
+            <summary>
+            The circle cache.
+            </summary>
+        </member>
+        <member name="F:HelixToolkit.Geometry.MeshBuilder.ClosedCircleCache">
+            <summary>
+            The closed circle cache.
+            </summary>
+        </member>
+        <member name="F:HelixToolkit.Geometry.MeshBuilder.UnitSphereCache">
+            <summary>
+            The unit sphere cache.
+            </summary>
+        </member>
+        <member name="P:HelixToolkit.Geometry.MeshBuilder.Positions">
+            <summary>
+            The positions.
+            </summary>
+        </member>
+        <member name="P:HelixToolkit.Geometry.MeshBuilder.TriangleIndices">
+            <summary>
+            The triangle indices.
+            </summary>
+        </member>
+        <member name="P:HelixToolkit.Geometry.MeshBuilder.Normals">
+            <summary>
+            The normal vectors.
+            </summary>
+        </member>
+        <member name="P:HelixToolkit.Geometry.MeshBuilder.TextureCoordinates">
+            <summary>
+            The texture coordinates.
+            </summary>
+        </member>
+        <member name="P:HelixToolkit.Geometry.MeshBuilder.Tangents">
+            <summary>
+            The Tangents.
+            </summary>
+        </member>
+        <member name="P:HelixToolkit.Geometry.MeshBuilder.BiTangents">
+            <summary>
+            The Bi-Tangents.
+            </summary>
+        </member>
+        <member name="P:HelixToolkit.Geometry.MeshBuilder.HasNormals">
+            <summary>
+            Do we have Normals or not.
+            </summary>
+        </member>
+        <member name="P:HelixToolkit.Geometry.MeshBuilder.HasTexCoords">
+            <summary>
+            Do we have Texture Coordinates or not.
+            </summary>
+        </member>
+        <member name="P:HelixToolkit.Geometry.MeshBuilder.HasTangents">
+            <summary>
+            Do we have Tangents or not.
+            </summary>
+        </member>
+        <member name="P:HelixToolkit.Geometry.MeshBuilder.CreateNormals">
+            <summary>
+            Gets or sets a value indicating whether to create normal vectors.
+            </summary>
+            <value>
+            <c>true</c> if normal vectors should be created; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="P:HelixToolkit.Geometry.MeshBuilder.CreateTextureCoordinates">
+            <summary>
+            Gets or sets a value indicating whether to create texture coordinates.
+            </summary>
+            <value>
+            <c>true</c> if texture coordinates should be created; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="M:HelixToolkit.Geometry.MeshBuilder.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:HelixToolkit.Geometry.MeshBuilder"/> class.
+            </summary>
+            <remarks>
+            Normal and texture coordinate generation are included.
+            </remarks>
+        </member>
+        <member name="M:HelixToolkit.Geometry.MeshBuilder.#ctor(System.Boolean,System.Boolean,System.Boolean)">
+            <summary>
+            Initializes a new instance of the <see cref="T:HelixToolkit.Geometry.MeshBuilder"/> class.
+            </summary>
+            <param name="generateNormals">
+            Generate normal vectors.
+            </param>
+            <param name="generateTexCoords">
+            Generate texture coordinates.
+            </param>
+            <param name="tangentSpace">
+            Generate tangents.
+            </param>
+        </member>
+        <member name="M:HelixToolkit.Geometry.MeshBuilder.GetCircle(System.Int32,System.Boolean)">
+            <summary>
+            Gets a unit circle section with radius = 1, (cached).
+            </summary>
+            <param name="thetaDiv">
+            The number of divisions.
+            </param>
+            <param name="closed">
+            Is the circle closed?
+            If true, the last point will be in the same position as the first one.
+            </param>
+            <returns>
+            A circle.
+            </returns>
+        </member>
+        <member name="M:HelixToolkit.Geometry.MeshBuilder.GetCircleSegment(System.Int32,System.Single,System.Single)">
+            <summary>
+            Gets a unit circle segment section with radius = 1.
+            </summary>
+            <param name="thetaDiv">The number of division.</param>
+            <param name="totalAngle">The angle of the circle segment.</param>
+            <param name="angleOffset">The angle-offset to use,in radian.</param>
+            <returns>
+            A circle segment.
+            </returns>
+        </member>
+        <member name="M:HelixToolkit.Geometry.MeshBuilder.GetRectangle(System.Single,System.Single)">
+            <summary>
+            Get a rectangle section, (cached).
+            </summary>
+            <param name="width">The width of rectangle.</param>
+            <param name="height">The height of rectangle.</param>
+            <returns></returns>
+        </member>
+        <member name="M:HelixToolkit.Geometry.MeshBuilder.GetUnitSphere(System.Int32)">
+            <summary>
+            Gets a unit sphere from the cache.
+            </summary>
+            <param name="subdivisions">
+            The number of subdivisions.
+            </param>
+            <returns>
+            A unit sphere mesh.
+            </returns>
+        </member>
+        <member name="M:HelixToolkit.Geometry.MeshBuilder.ComputeNormals(System.Collections.Generic.IList{System.Numerics.Vector3},System.Collections.Generic.IList{System.Int32},System.Collections.Generic.IList{System.Numerics.Vector3}@)">
+            <summary>
+            Calculate the Mesh's Normals
+            </summary>
+            <param name="positions">The Positions.</param>
+            <param name="triangleIndices">The TriangleIndices.</param>
+            <param name="normals">The calcualted Normals.</param>
+        </member>
+        <member name="M:HelixToolkit.Geometry.MeshBuilder.ComputeTangents(HelixToolkit.Geometry.MeshFaces)">
+            <summary>
+            Calculate the Mesh's Tangents
+            </summary>
+            <param name="meshFaces">The Faces of the Mesh</param>
+        </member>
+        <member name="M:HelixToolkit.Geometry.MeshBuilder.ComputeTangents(System.Collections.Generic.IList{System.Numerics.Vector3},System.Collections.Generic.IList{System.Numerics.Vector3},System.Collections.Generic.IList{System.Numerics.Vector2},System.Collections.Generic.IList{System.Int32},System.Collections.Generic.IList{System.Numerics.Vector3}@,System.Collections.Generic.IList{System.Numerics.Vector3}@)">
+            <summary>
+            Tangent Space computation for IndexedTriangle meshes
+            Based on:
+            http://www.terathon.com/code/tangent.html
+            </summary>
+        </member>
+        <member name="M:HelixToolkit.Geometry.MeshBuilder.ComputeTangentsQuads(System.Collections.Generic.IList{System.Numerics.Vector3},System.Collections.Generic.IList{System.Numerics.Vector3},System.Collections.Generic.IList{System.Numerics.Vector2},System.Collections.Generic.IList{System.Int32},System.Collections.Generic.IList{System.Numerics.Vector3}@,System.Collections.Generic.IList{System.Numerics.Vector3}@)">
+            <summary>
+            Calculate the Tangents for a Quad.
+            </summary>
+            <param name="positions">The Positions.</param>
+            <param name="normals">The Normals.</param>
+            <param name="textureCoordinates">The TextureCoordinates.</param>
+            <param name="indices">The Indices.</param>
+            <param name="tangents">The calculated Tangens.</param>
+            <param name="bitangents">The calculated Bi-Tangens.</param>
+        </member>
+        <member name="M:HelixToolkit.Geometry.MeshBuilder.ComputeTangents(HelixToolkit.Geometry.MeshGeometry3D)">
+            <summary>
+            Calculate the Tangents for a MeshGeometry3D.
+            </summary>
+            <param name="meshGeometry">The MeshGeometry3D.</param>
+        </member>
+        <member name="M:HelixToolkit.Geometry.MeshBuilder.ComputeNormalsAndTangents(HelixToolkit.Geometry.MeshFaces,System.Boolean)">
+            <summary>
+            Calculate the Normals and Tangents for all MeshFaces.
+            </summary>
+            <param name="meshFaces">The MeshFaces.</param>
+            <param name="tangents">Also calculate the Tangents or not.</param>
+        </member>
+        <member name="M:HelixToolkit.Geometry.MeshBuilder.AddArrow(System.Numerics.Vector3,System.Numerics.Vector3,System.Single,System.Single,System.Int32)">
+            <summary>
+            Adds an arrow to the mesh.
+            </summary>
+            <param name="point1">
+            The start point.
+            </param>
+            <param name="point2">
+            The end point.
+            </param>
+            <param name="diameter">
+            The diameter of the arrow cylinder.
+            </param>
+            <param name="headLength">
+            Length of the head (relative to diameter).
+            </param>
+            <param name="thetaDiv">
+            The number of divisions around the arrow.
+            </param>
+        </member>
+        <member name="M:HelixToolkit.Geometry.MeshBuilder.AddBoundingBox(HelixToolkit.Maths.BoundingBox,System.Single)">
+            <summary>
+            Adds the edges of a bounding box as pipes.
+            </summary>
+            <param name="boundingBox">
+            The bounding box.
+            </param>
+            <param name="diameter">
+            The diameter of the cylinders.
+            </param>
+        </member>
+        <member name="M:HelixToolkit.Geometry.MeshBuilder.AddBox(System.Numerics.Vector3,System.Single,System.Single,System.Single)">
+            <summary>
+            Adds a box aligned with the X, Y and Z axes.
+            </summary>
+            <param name="center">
+            The center point of the box.
+            </param>
+            <param name="xlength">
+            The length of the box along the X axis.
+            </param>
+            <param name="ylength">
+            The length of the box along the Y axis.
+            </param>
+            <param name="zlength">
+            The length of the box along the Z axis.
+            </param>
+        </member>
+        <member name="M:HelixToolkit.Geometry.MeshBuilder.AddBox(HelixToolkit.Maths.BoundingBox,HelixToolkit.Geometry.BoxFaces)">
+            <summary>
+            Adds a box aligned with the X, Y and Z axes.
+            </summary>
+            <param name="boundingBox">
+            The bounding box.
+            </param>
+            <param name="faces">The faces to include.</param>
+        </member>
+        <member name="M:HelixToolkit.Geometry.MeshBuilder.AddBox(System.Numerics.Vector3,System.Single,System.Single,System.Single,HelixToolkit.Geometry.BoxFaces)">
+            <summary>
+            Adds a box with the specified faces, aligned with the X, Y and Z axes.
+            </summary>
+            <param name="center">
+            The center point of the box.
+            </param>
+            <param name="xlength">
+            The length of the box along the X axis.
+            </param>
+            <param name="ylength">
+            The length of the box along the Y axis.
+            </param>
+            <param name="zlength">
+            The length of the box along the Z axis.
+            </param>
+            <param name="faces">
+            The faces to include.
+            </param>
+        </member>
+        <member name="M:HelixToolkit.Geometry.MeshBuilder.AddBox(System.Numerics.Vector3,System.Numerics.Vector3,System.Numerics.Vector3,System.Single,System.Single,System.Single,HelixToolkit.Geometry.BoxFaces)">
+            <summary>
+            Adds a box with the specified faces, aligned with the specified axes.
+            </summary>
+            <param name="center">The center point of the box.</param>
+            <param name="x">The x axis.</param>
+            <param name="y">The y axis.</param>
+            <param name="xlength">The length of the box along the X axis.</param>
+            <param name="ylength">The length of the box along the Y axis.</param>
+            <param name="zlength">The length of the box along the Z axis.</param>
+            <param name="faces">The faces to include.</param>
+        </member>
+        <member name="M:HelixToolkit.Geometry.MeshBuilder.AddCone(System.Numerics.Vector3,System.Numerics.Vector3,System.Single,System.Single,System.Single,System.Boolean,System.Boolean,System.Int32)">
+            <summary>
+            Adds a (possibly truncated) cone.
+            </summary>
+            <param name="origin">
+            The origin.
+            </param>
+            <param name="direction">
+            The direction (normalization not required).
+            </param>
+            <param name="baseRadius">
+            The base radius.
+            </param>
+            <param name="topRadius">
+            The top radius.
+            </param>
+            <param name="height">
+            The height.
+            </param>
+            <param name="baseCap">
+            Include a base cap if set to <c>true</c> .
+            </param>
+            <param name="topCap">
+            Include the top cap if set to <c>true</c> .
+            </param>
+            <param name="thetaDiv">
+            The number of divisions around the cone.
+            </param>
+            <remarks>
+            See http://en.wikipedia.org/wiki/Cone_(geometry).
+            </remarks>
+        </member>
+        <member name="M:HelixToolkit.Geometry.MeshBuilder.AddCone(System.Numerics.Vector3,System.Numerics.Vector3,System.Single,System.Boolean,System.Int32)">
+            <summary>
+            Adds a cone.
+            </summary>
+            <param name="origin">The origin point.</param>
+            <param name="apex">The apex point.</param>
+            <param name="baseRadius">The base radius.</param>
+            <param name="baseCap">
+            Include a base cap if set to <c>true</c> .
+            </param>
+            <param name="thetaDiv">The theta div.</param>
+        </member>
+        <member name="M:HelixToolkit.Geometry.MeshBuilder.AddCubeFace(System.Numerics.Vector3,System.Numerics.Vector3,System.Numerics.Vector3,System.Single,System.Single,System.Single)">
+            <summary>
+            Adds a cube face.
+            </summary>
+            <param name="center">
+            The center of the cube.
+            </param>
+            <param name="normal">
+            The normal vector for the face.
+            </param>
+            <param name="up">
+            The up vector for the face.
+            </param>
+            <param name="dist">
+            The distance from the center of the cube to the face.
+            </param>
+            <param name="width">
+            The width of the face.
+            </param>
+            <param name="height">
+            The height of the face.
+            </param>
+        </member>
+        <member name="M:HelixToolkit.Geometry.MeshBuilder.AddCube(HelixToolkit.Geometry.BoxFaces)">
+            <summary>
+            Add a Cube, only with specified Faces.
+            </summary>
+            <param name="faces">The Faces to create (default all Faces)</param>
+        </member>
+        <member name="M:HelixToolkit.Geometry.MeshBuilder.AddCylinder(System.Numerics.Vector3,System.Numerics.Vector3,System.Single,System.Int32)">
+            <summary>
+            Adds a cylinder to the mesh.
+            </summary>
+            <param name="p1">
+            The first point.
+            </param>
+            <param name="p2">
+            The second point.
+            </param>
+            <param name="diameter">
+            The diameters.
+            </param>
+            <param name="thetaDiv">
+            The number of divisions around the cylinder.
+            </param>
+            <remarks>
+            See http://en.wikipedia.org/wiki/Cylinder_(geometry).
+            </remarks>
+        </member>
+        <member name="M:HelixToolkit.Geometry.MeshBuilder.AddCylinder(System.Numerics.Vector3,System.Numerics.Vector3,System.Single,System.Int32,System.Boolean,System.Boolean)">
+            <summary>
+            Adds a cylinder to the mesh.
+            </summary>
+            <param name="p1">
+            The first point.
+            </param>
+            <param name="p2">
+            The second point.
+            </param>
+            <param name="radius">
+            The diameters.
+            </param>
+            <param name="thetaDiv">
+            The number of divisions around the cylinder.
+            </param>
+            <param name="cap1">
+            The first Cap.
+            </param>
+            <param name="cap2">
+            The second Cap.
+            </param>
+            <remarks>
+            See http://en.wikipedia.org/wiki/Cylinder_(geometry).
+            </remarks>
+        </member>
+        <member name="M:HelixToolkit.Geometry.MeshBuilder.AddDodecahedron(System.Numerics.Vector3,System.Numerics.Vector3,System.Numerics.Vector3,System.Single)">
+            <summary>
+            Generate a Dodecahedron
+            </summary>
+            <param name="center">The Center of the Dodecahedron</param>
+            <param name="forward">The Direction to the first Point (normalized).</param>
+            <param name="up">The Up-Dirextion (normalized, perpendicular to the forward Direction)</param>
+            <param name="sideLength">Length of the Edges of the Dodecahedron</param>
+            <remarks>
+            See:
+            https://en.wikipedia.org/wiki/Dodecahedron
+            https://en.wikipedia.org/wiki/Pentagon
+            https://en.wikipedia.org/wiki/Isosceles_triangle
+            </remarks>
+        </member>
+        <member name="M:HelixToolkit.Geometry.MeshBuilder.AddEdges(System.Collections.Generic.IList{System.Numerics.Vector3},System.Collections.Generic.IList{System.Int32},System.Single,System.Int32)">
+            <summary>
+            Adds a collection of edges as cylinders.
+            </summary>
+            <param name="points">
+            The points.
+            </param>
+            <param name="edges">
+            The edge indices.
+            </param>
+            <param name="diameter">
+            The diameter of the cylinders.
+            </param>
+            <param name="thetaDiv">
+            The number of divisions around the cylinders.
+            </param>
+        </member>
+        <member name="M:HelixToolkit.Geometry.MeshBuilder.AddEllipsoid(System.Numerics.Vector3,System.Single,System.Single,System.Single,System.Int32,System.Int32)">
+            <summary>
+            Adds an ellipsoid.
+            </summary>
+            <param name="center">
+            The center of the ellipsoid.
+            </param>
+            <param name="radiusx">
+            The x radius of the ellipsoid.
+            </param>
+            <param name="radiusy">
+            The y radius of the ellipsoid.
+            </param>
+            <param name="radiusz">
+            The z radius of the ellipsoid.
+            </param>
+            <param name="thetaDiv">
+            The number of divisions around the ellipsoid.
+            </param>
+            <param name="phiDiv">
+            The number of divisions from top to bottom of the ellipsoid.
+            </param>
+        </member>
+        <member name="M:HelixToolkit.Geometry.MeshBuilder.AddExtrudedGeometry(System.Collections.Generic.IList{System.Numerics.Vector2},System.Numerics.Vector3,System.Numerics.Vector3,System.Numerics.Vector3)">
+            <summary>
+            Adds an extruded surface of the specified curve.
+            </summary>
+            <param name="points">
+            The 2D points describing the curve to extrude.
+            </param>
+            <param name="xaxis">
+            The x-axis.
+            </param>
+            <param name="p0">
+            The start origin of the extruded surface.
+            </param>
+            <param name="p1">
+            The end origin of the extruded surface.
+            </param>
+            <remarks>
+            The y-axis is determined by the cross product between the specified x-axis and the p1-origin vector.
+            </remarks>
+        </member>
+        <member name="M:HelixToolkit.Geometry.MeshBuilder.AddFacePZ">
+            <summary>
+            Add a Face in positive Z-Direction.
+            </summary>
+        </member>
+        <member name="M:HelixToolkit.Geometry.MeshBuilder.AddFaceNZ">
+            <summary>
+            Add a Face in negative Z-Direction.
+            </summary>
+        </member>
+        <member name="M:HelixToolkit.Geometry.MeshBuilder.AddFacePX">
+            <summary>
+            Add a Face in positive X-Direction.
+            </summary>
+        </member>
+        <member name="M:HelixToolkit.Geometry.MeshBuilder.AddFaceNX">
+            <summary>
+            Add a Face in negative X-Direction.
+            </summary>
+        </member>
+        <member name="M:HelixToolkit.Geometry.MeshBuilder.AddFacePY">
+            <summary>
+            Add a Face in positive Y-Direction.
+            </summary>
+        </member>
+        <member name="M:HelixToolkit.Geometry.MeshBuilder.AddFaceNY">
+            <summary>
+            Add a Face in negative Y-Direction.
+            </summary>
+        </member>
+        <member name="M:HelixToolkit.Geometry.MeshBuilder.AddExtrudedSegments(System.Collections.Generic.IList{System.Numerics.Vector2},System.Numerics.Vector3,System.Numerics.Vector3,System.Numerics.Vector3)">
+            <summary>
+            Adds an extruded surface of the specified line segments.
+            </summary>
+            <param name="points">The 2D points describing the line segments to extrude. The number of points must be even.</param>
+            <param name="axisX">The x-axis.</param>
+            <param name="p0">The start origin of the extruded surface.</param>
+            <param name="p1">The end origin of the extruded surface.</param>
+            <remarks>The y-axis is determined by the cross product between the specified x-axis and the p1-origin vector.</remarks>
+        </member>
+        <member name="M:HelixToolkit.Geometry.MeshBuilder.AddLoftedGeometry(System.Collections.Generic.IList{System.Collections.Generic.IList{System.Numerics.Vector3}},System.Collections.Generic.IList{System.Collections.Generic.IList{System.Numerics.Vector3}},System.Collections.Generic.IList{System.Collections.Generic.IList{System.Numerics.Vector2}})">
+            <summary>
+            Adds a lofted surface.
+            </summary>
+            <param name="positionsList">
+            List of lofting sections.
+            </param>
+            <param name="normalList">
+            The normal list.
+            </param>
+            <param name="textureCoordinateList">
+            The texture coordinate list.
+            </param>
+            <remarks>
+            See http://en.wikipedia.org/wiki/Loft_(3D).
+            </remarks>
+        </member>
+        <member name="M:HelixToolkit.Geometry.MeshBuilder.AddNode(System.Numerics.Vector3,System.Numerics.Vector3,System.Numerics.Vector2)">
+            <summary>
+            Adds a single node.
+            </summary>
+            <param name="position">
+            The position.
+            </param>
+            <param name="normal">
+            The normal.
+            </param>
+            <param name="textureCoordinate">
+            The texture coordinate.
+            </param>
+        </member>
+        <member name="M:HelixToolkit.Geometry.MeshBuilder.AddOctahedron(System.Numerics.Vector3,System.Numerics.Vector3,System.Numerics.Vector3,System.Single,System.Single)">
+            <summary>
+            Adds an octahedron.
+            </summary>
+            <param name="center">The center.</param>
+            <param name="forward">The normal vector.</param>
+            <param name="up">The up vector.</param>
+            <param name="sideLength">Length of the side.</param>
+            <param name="height">The half height of the octahedron.</param>
+            <remarks>See <a href="http://en.wikipedia.org/wiki/Octahedron">Octahedron</a>.</remarks>
+        </member>
+        <member name="M:HelixToolkit.Geometry.MeshBuilder.AddPipe(System.Numerics.Vector3,System.Numerics.Vector3,System.Single,System.Single,System.Int32)">
+            <summary>
+            Adds a (possibly hollow) pipe.
+            </summary>
+            <param name="point1">
+            The start point.
+            </param>
+            <param name="point2">
+            The end point.
+            </param>
+            <param name="innerDiameter">
+            The inner diameter.
+            </param>
+            <param name="outerDiameter">
+            The outer diameter.
+            </param>
+            <param name="thetaDiv">
+            The number of divisions around the pipe.
+            </param>
+        </member>
+        <member name="M:HelixToolkit.Geometry.MeshBuilder.AddPipes(System.Collections.Generic.IList{System.Numerics.Vector3},System.Collections.Generic.IList{System.Int32},System.Single,System.Int32)">
+            <summary>
+            Adds a collection of edges as cylinders.
+            </summary>
+            <param name="points">
+            The points.
+            </param>
+            <param name="edges">
+            The edge indices.
+            </param>
+            <param name="diameter">
+            The diameter of the cylinders.
+            </param>
+            <param name="thetaDiv">
+            The number of divisions around the cylinders.
+            </param>
+        </member>
+        <member name="M:HelixToolkit.Geometry.MeshBuilder.AddPolygon(System.Collections.Generic.IList{System.Numerics.Vector2},System.Numerics.Vector3,System.Numerics.Vector3,System.Numerics.Vector3)">
+            <summary>
+            Adds a polygon.
+            </summary>
+            <param name="points">The 2D points defining the polygon.</param>
+            <param name="axisX">The x axis.</param>
+            <param name="axisY">The y axis.</param>
+            <param name="origin">The origin.</param>
+        </member>
+        <member name="M:HelixToolkit.Geometry.MeshBuilder.AddPolygon(System.Collections.Generic.IList{System.Numerics.Vector3})">
+            <summary>
+            Adds a polygon.
+            </summary>
+            <param name="points">
+            The points of the polygon.
+            </param>
+            <remarks>
+            If the number of points is greater than 4, a triangle fan is used.
+            </remarks>
+        </member>
+        <member name="M:HelixToolkit.Geometry.MeshBuilder.AddPolygon(System.Collections.Generic.IList{System.Int32})">
+            <summary>
+            Adds a polygon specified by vertex index (uses a triangle fan).
+            </summary>
+            <param name="vertexIndices">The vertex indices.</param>
+        </member>
+        <member name="M:HelixToolkit.Geometry.MeshBuilder.AddPolygonByCuttingEars(System.Collections.Generic.IList{System.Int32})">
+            <summary>
+            Adds a polygon defined by vertex indices (uses the cutting ears algorithm).
+            </summary>
+            <param name="vertexIndices">The vertex indices.</param>
+        </member>
+        <member name="M:HelixToolkit.Geometry.MeshBuilder.AddPolygonByTriangulation(System.Collections.Generic.IList{System.Int32})">
+            <summary>
+            Adds a polygon defined by vertex indices (uses the sweep line algorithm).
+            </summary>
+            <param name="vertexIndices">The vertex indices.</param>
+        </member>
+        <member name="M:HelixToolkit.Geometry.MeshBuilder.AddPyramid(System.Numerics.Vector3,System.Single,System.Single,System.Boolean)">
+            <summary>
+            Adds a pyramid.
+            </summary>
+            <param name="center">
+            The center.
+            </param>
+            <param name="sideLength">
+            Length of the sides of the pyramid.
+            </param>
+            <param name="height">
+            The height of the pyramid.
+            </param>
+            <param name="closeBase">
+            Add triangles to the base of the pyramid or not.
+            </param>
+            <remarks>
+            See http://en.wikipedia.org/wiki/Pyramid_(geometry).
+            </remarks>
+        </member>
+        <member name="M:HelixToolkit.Geometry.MeshBuilder.AddPyramid(System.Numerics.Vector3,System.Numerics.Vector3,System.Numerics.Vector3,System.Single,System.Single,System.Boolean)">
+            <summary>
+            Adds a pyramid.
+            </summary>
+            <param name="center">The center.</param>
+            <param name="forward">The normal vector (normalized).</param>
+            <param name="up">The 'up' vector (normalized).</param>
+            <param name="sideLength">Length of the sides of the pyramid.</param>
+            <param name="height">The height of the pyramid.</param>
+            <param name="closeBase">Add triangles to the base of the pyramid or not.</param>
+        </member>
+        <member name="M:HelixToolkit.Geometry.MeshBuilder.AddQuad(System.Collections.Generic.IList{System.Int32})">
+            <summary>
+            Adds a quad (exactely 4 indices)
+            </summary>
+            <param name="vertexIndices">The vertex indices.</param>
+        </member>
+        <member name="M:HelixToolkit.Geometry.MeshBuilder.AddQuad(System.Numerics.Vector3,System.Numerics.Vector3,System.Numerics.Vector3,System.Numerics.Vector3)">
+            <summary>
+            Adds a quadrilateral polygon.
+            </summary>
+            <param name="p0">
+            The first point.
+            </param>
+            <param name="p1">
+            The second point.
+            </param>
+            <param name="p2">
+            The third point.
+            </param>
+            <param name="p3">
+            The fourth point.
+            </param>
+            <remarks>
+            See http://en.wikipedia.org/wiki/Quadrilateral.
+            </remarks>
+        </member>
+        <member name="M:HelixToolkit.Geometry.MeshBuilder.AddQuad(System.Numerics.Vector3,System.Numerics.Vector3,System.Numerics.Vector3,System.Numerics.Vector3,System.Numerics.Vector2,System.Numerics.Vector2,System.Numerics.Vector2,System.Numerics.Vector2)">
+            <summary>
+            Adds a quadrilateral polygon.
+            </summary>
+            <param name="p0">
+            The first point.
+            </param>
+            <param name="p1">
+            The second point.
+            </param>
+            <param name="p2">
+            The third point.
+            </param>
+            <param name="p3">
+            The fourth point.
+            </param>
+            <param name="uv0">
+            The first texture coordinate.
+            </param>
+            <param name="uv1">
+            The second texture coordinate.
+            </param>
+            <param name="uv2">
+            The third texture coordinate.
+            </param>
+            <param name="uv3">
+            The fourth texture coordinate.
+            </param>
+            <remarks>
+            See http://en.wikipedia.org/wiki/Quadrilateral.
+            </remarks>
+        </member>
+        <member name="M:HelixToolkit.Geometry.MeshBuilder.AddQuads(System.Collections.Generic.IList{System.Numerics.Vector3},System.Collections.Generic.IList{System.Numerics.Vector3},System.Collections.Generic.IList{System.Numerics.Vector2})">
+            <summary>
+            Adds a list of quadrilateral polygons.
+            </summary>
+            <param name="quadPositions">
+            The points.
+            </param>
+            <param name="quadNormals">
+            The normal vectors.
+            </param>
+            <param name="quadTextureCoordinates">
+            The texture coordinates.
+            </param>
+        </member>
+        <member name="M:HelixToolkit.Geometry.MeshBuilder.AddRectangularMesh(System.Collections.Generic.IList{System.Numerics.Vector3},System.Int32)">
+            <summary>
+            Adds a rectangular mesh (m x n points).
+            </summary>
+            <param name="points">
+            The one-dimensional array of points. The points are stored row-by-row.
+            </param>
+            <param name="columns">
+            The number of columns in the rectangular mesh.
+            </param>
+        </member>
+        <member name="M:HelixToolkit.Geometry.MeshBuilder.AddRectangularMesh(System.Numerics.Vector3[0:,0:],System.Numerics.Vector2[0:,0:],System.Boolean,System.Boolean)">
+            <summary>
+            Adds a rectangular mesh defined by a two-dimensional array of points.
+            </summary>
+            <param name="points">
+            The points.
+            </param>
+            <param name="texCoords">
+            The texture coordinates (optional).
+            </param>
+            <param name="closed0">
+            set to <c>true</c> if the mesh is closed in the first dimension.
+            </param>
+            <param name="closed1">
+            set to <c>true</c> if the mesh is closed in the second dimension.
+            </param>
+        </member>
+        <member name="M:HelixToolkit.Geometry.MeshBuilder.AddRectangularMesh(System.Collections.Generic.IList{System.Numerics.Vector3},System.Int32,System.Boolean)">
+            <summary>
+            Adds a rectangular mesh (m x n points).
+            </summary>
+            <param name="points">
+            The one-dimensional array of points. The points are stored row-by-row.
+            </param>
+            <param name="columns">
+            The number of columns in the rectangular mesh.
+            </param>
+            <param name="flipTriangles">
+            Flip the Triangles.
+            </param>
+        </member>
+        <member name="M:HelixToolkit.Geometry.MeshBuilder.AddRectangularMesh(HelixToolkit.Geometry.BoxFaces,System.Int32,System.Int32,System.Single,System.Single,System.Boolean,System.Boolean,System.Boolean)">
+            <summary>
+            Generates a rectangles mesh on the axis-aligned plane given by the box-face.
+            </summary>
+            <param name="plane">Box face which determines the plane the grid lies on.</param>
+            <param name="columns">width of the grid, i.e. horizontal resolution </param>
+            <param name="rows">height of the grid, i.e. vertical resolution</param>
+            <param name="width">total size in horizontal </param>
+            <param name="height">total vertical size</param>
+            <param name="flipTriangles">flips the triangle faces</param>
+            <param name="flipTexCoordsUAxis">flips the u-axis (horizontal) of the texture coords.</param>
+            <param name="flipTexCoordsVAxis">flips the v-axis (vertical) of the tex.coords.</param>
+        </member>
+        <member name="M:HelixToolkit.Geometry.MeshBuilder.AddRectangularMeshNormals(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Adds normal vectors for a rectangular mesh.
+            </summary>
+            <param name="index0">
+            The index 0.
+            </param>
+            <param name="rows">
+            The number of rows.
+            </param>
+            <param name="columns">
+            The number of columns.
+            </param>
+        </member>
+        <member name="M:HelixToolkit.Geometry.MeshBuilder.AddRectangularMeshTextureCoordinates(System.Int32,System.Int32,System.Boolean,System.Boolean)">
+            <summary>
+            Adds texture coordinates for a rectangular mesh.
+            </summary>
+            <param name="rows">
+            The number of rows.
+            </param>
+            <param name="columns">
+            The number of columns.
+            </param>
+            <param name="flipRowsAxis">
+            Flip the Rows.
+            </param>
+            <param name="flipColumnsAxis">
+            Flip the Columns.
+            </param>
+        </member>
+        <member name="M:HelixToolkit.Geometry.MeshBuilder.AddRectangularMeshTriangleIndices(System.Int32,System.Int32,System.Int32,System.Boolean)">
+            <summary>
+            Add triangle indices for a rectangular mesh.
+            </summary>
+            <param name="index0">
+            The index offset.
+            </param>
+            <param name="rows">
+            The number of rows.
+            </param>
+            <param name="columns">
+            The number of columns.
+            </param>
+            <param name="isSpherical">
+            set the flag to true to create a sphere mesh (triangles at top and bottom).
+            </param>
+        </member>
+        <member name="M:HelixToolkit.Geometry.MeshBuilder.AddRectangularMeshTriangleIndices(System.Int32,System.Int32,System.Int32,System.Boolean,System.Boolean)">
+            <summary>
+            Adds triangular indices for a rectangular mesh.
+            </summary>
+            <param name="index0">
+            The index 0.
+            </param>
+            <param name="rows">
+            The rows.
+            </param>
+            <param name="columns">
+            The columns.
+            </param>
+            <param name="rowsClosed">
+            True if rows are closed.
+            </param>
+            <param name="columnsClosed">
+            True if columns are closed.
+            </param>
+        </member>
+        <member name="M:HelixToolkit.Geometry.MeshBuilder.AddRectangularMeshTriangleIndicesFlipped(System.Int32,System.Int32,System.Int32,System.Boolean)">
+            <summary>
+            Add triangle indices for a rectangular mesh with flipped triangles.
+            </summary>
+            <param name="index0">
+            The index offset.
+            </param>
+            <param name="rows">
+            The number of rows.
+            </param>
+            <param name="columns">
+            The number of columns.
+            </param>
+            <param name="isSpherical">
+            set the flag to true to create a sphere mesh (triangles at top and bottom).
+            </param>
+        </member>
+        <member name="M:HelixToolkit.Geometry.MeshBuilder.AddRegularIcosahedron(System.Numerics.Vector3,System.Single,System.Boolean)">
+            <summary>
+            Adds a regular icosahedron.
+            </summary>
+            <param name="center">
+            The center.
+            </param>
+            <param name="radius">
+            The radius.
+            </param>
+            <param name="shareVertices">
+            Share vertices if set to <c>true</c> .
+            </param>
+            <remarks>
+            See <a href="http://en.wikipedia.org/wiki/Icosahedron">Wikipedia</a> and <a href="http://www.gamedev.net/community/forums/topic.asp?topic_id=283350">link</a>.
+            </remarks>
+        </member>
+        <member name="M:HelixToolkit.Geometry.MeshBuilder.AddRevolvedGeometry(System.Collections.Generic.IList{System.Numerics.Vector2},System.Collections.Generic.IList{System.Single},System.Numerics.Vector3,System.Numerics.Vector3,System.Int32)">
+            <summary>
+            Adds a surface of revolution.
+            </summary>
+            <param name="points">The points (x coordinates are distance from the origin along the axis of revolution, y coordinates are radius, )</param>
+            <param name="textureValues">The v texture coordinates, one for each point in the <paramref name="points" /> list.</param>
+            <param name="origin">The origin of the revolution axis.</param>
+            <param name="direction">The direction of the revolution axis.</param>
+            <param name="thetaDiv">The number of divisions around the mesh.</param>
+            <remarks>
+            See http://en.wikipedia.org/wiki/Surface_of_revolution.
+            </remarks>
+        </member>
+        <member name="M:HelixToolkit.Geometry.MeshBuilder.AddSphere(System.Numerics.Vector3,System.Single,System.Int32,System.Int32)">
+            <summary>
+            Adds a sphere.
+            </summary>
+            <param name="center">
+            The center of the sphere.
+            </param>
+            <param name="radius">
+            The radius of the sphere.
+            </param>
+            <param name="thetaDiv">
+            The number of divisions around the sphere.
+            </param>
+            <param name="phiDiv">
+            The number of divisions from top to bottom of the sphere.
+            </param>
+        </member>
+        <member name="M:HelixToolkit.Geometry.MeshBuilder.AddSubdivisionSphere(System.Numerics.Vector3,System.Single,System.Int32)">
+            <summary>
+            Adds a sphere (by subdividing a regular icosahedron).
+            </summary>
+            <param name="center">
+            The center of the sphere.
+            </param>
+            <param name="radius">
+            The radius of the sphere.
+            </param>
+            <param name="subdivisions">
+            The number of triangular subdivisions of the original icosahedron.
+            </param>
+            <remarks>
+            See <a href="http://www.fho-emden.de/~hoffmann/ikos27042002.pdf">link</a>.
+            </remarks>
+        </member>
+        <member name="M:HelixToolkit.Geometry.MeshBuilder.AddSurfaceOfRevolution(System.Numerics.Vector3,System.Numerics.Vector3,System.Collections.Generic.IList{System.Numerics.Vector2},System.Collections.Generic.IList{System.Int32},System.Int32,System.Collections.Generic.IList{System.Single})">
+            <summary>
+            Adds a surface of revolution.
+            </summary>
+            <param name="origin">The origin.</param>
+            <param name="axis">The axis.</param>
+            <param name="section">The points defining the curve to revolve.</param>
+            <param name="sectionIndices">The indices of the line segments of the section.</param>
+            <param name="thetaDiv">The number of divisions.</param>
+            <param name="textureValues">The texture values.</param>
+        </member>
+        <member name="M:HelixToolkit.Geometry.MeshBuilder.AddTetrahedron(System.Numerics.Vector3,System.Numerics.Vector3,System.Numerics.Vector3,System.Single)">
+            <summary>
+            Add a tetrahedron.
+            </summary>
+            <param name="center">The Center of Mass.</param>
+            <param name="forward">Direction to first Base-Point (in Base-Plane).</param>
+            <param name="up">Up Vector.</param>
+            <param name="sideLength">The Sidelength.</param>
+            <remarks>
+            See https://en.wikipedia.org/wiki/Tetrahedron and
+            https://en.wikipedia.org/wiki/Equilateral_triangle.
+            </remarks>
+        </member>
+        <member name="M:HelixToolkit.Geometry.MeshBuilder.AddTorus(System.Single,System.Single,System.Int32,System.Int32)">
+            <summary>
+            Adds a torus.
+            </summary>
+            <param name="torusDiameter">The diameter of the torus.</param>
+            <param name="tubeDiameter">The diameter of the torus "tube".</param>
+            <param name="thetaDiv">The number of subdivisions around the torus.</param>
+            <param name="phiDiv">The number of subdividions of the torus' "tube.</param>
+        </member>
+        <member name="M:HelixToolkit.Geometry.MeshBuilder.AddTriangle(System.Collections.Generic.IList{System.Int32})">
+            <summary>
+            Adds a triangle (exactely 3 indices)
+            </summary>
+            <param name="vertexIndices">The vertex indices.</param>
+        </member>
+        <member name="M:HelixToolkit.Geometry.MeshBuilder.AddTriangle(System.Numerics.Vector3,System.Numerics.Vector3,System.Numerics.Vector3)">
+            <summary>
+            Adds a triangle.
+            </summary>
+            <param name="p0">
+            The first point.
+            </param>
+            <param name="p1">
+            The second point.
+            </param>
+            <param name="p2">
+            The third point.
+            </param>
+        </member>
+        <member name="M:HelixToolkit.Geometry.MeshBuilder.AddTriangle(System.Numerics.Vector3,System.Numerics.Vector3,System.Numerics.Vector3,System.Numerics.Vector2,System.Numerics.Vector2,System.Numerics.Vector2)">
+            <summary>
+            Adds a triangle.
+            </summary>
+            <param name="p0">
+            The first point.
+            </param>
+            <param name="p1">
+            The second point.
+            </param>
+            <param name="p2">
+            The third point.
+            </param>
+            <param name="uv0">
+            The first texture coordinate.
+            </param>
+            <param name="uv1">
+            The second texture coordinate.
+            </param>
+            <param name="uv2">
+            The third texture coordinate.
+            </param>
+        </member>
+        <member name="M:HelixToolkit.Geometry.MeshBuilder.AddTriangleFan(System.Collections.Generic.IList{System.Int32})">
+            <summary>
+            Adds a triangle fan.
+            </summary>
+            <param name="vertices">
+            The vertex indices of the triangle fan.
+            </param>
+        </member>
+        <member name="M:HelixToolkit.Geometry.MeshBuilder.AddTriangleFan(System.Collections.Generic.IList{System.Numerics.Vector3},System.Collections.Generic.IList{System.Numerics.Vector3},System.Collections.Generic.IList{System.Numerics.Vector2})">
+            <summary>
+            Adds a triangle fan to the mesh
+            </summary>
+            <param name="fanPositions">
+            The points of the triangle fan.
+            </param>
+            <param name="fanNormals">
+            The normal vectors of the triangle fan.
+            </param>
+            <param name="fanTextureCoordinates">
+            The texture coordinates of the triangle fan.
+            </param>
+        </member>
+        <member name="M:HelixToolkit.Geometry.MeshBuilder.AddTriangles(System.Collections.Generic.IList{System.Numerics.Vector3},System.Collections.Generic.IList{System.Numerics.Vector3},System.Collections.Generic.IList{System.Numerics.Vector2})">
+            <summary>
+            Adds a list of triangles.
+            </summary>
+            <param name="trianglePositions">
+            The points (the number of points must be a multiple of 3).
+            </param>
+            <param name="triangleNormals">
+            The normal vectors (corresponding to the points).
+            </param>
+            <param name="triangleTextureCoordinates">
+            The texture coordinates (corresponding to the points).
+            </param>
+        </member>
+        <member name="M:HelixToolkit.Geometry.MeshBuilder.AddTriangleStrip(System.Collections.Generic.IList{System.Numerics.Vector3},System.Collections.Generic.IList{System.Numerics.Vector3},System.Collections.Generic.IList{System.Numerics.Vector2})">
+            <summary>
+            Adds a triangle strip to the mesh.
+            </summary>
+            <param name="stripPositions">
+            The points of the triangle strip.
+            </param>
+            <param name="stripNormals">
+            The normal vectors of the triangle strip.
+            </param>
+            <param name="stripTextureCoordinates">
+            The texture coordinates of the triangle strip.
+            </param>
+            <remarks>
+            See http://en.wikipedia.org/wiki/Triangle_strip.
+            </remarks>
+        </member>
+        <member name="M:HelixToolkit.Geometry.MeshBuilder.AddTube(System.Collections.Generic.IList{System.Numerics.Vector3},System.Single,System.Int32,System.Boolean,System.Boolean,System.Boolean)">
+            <summary>
+            Adds a tube with circle section.
+            </summary>
+            <param name="path">
+            A list of points defining the centers of the tube.
+            </param>
+            <param name="diameter">
+            The diameter of the tube.
+            </param>
+            <param name="thetaDiv">
+            The number of divisions around the tube.
+            </param>
+            <param name="isTubeClosed">
+            Set to true if the tube path is closed.
+            </param>
+            <param name="frontCap">
+            Generate front Cap or not.
+            </param>
+            <param name="backCap">
+            Generate back Cap or not.
+            </param>
+        </member>
+        <member name="M:HelixToolkit.Geometry.MeshBuilder.AddTube(System.Collections.Generic.IList{System.Numerics.Vector3},System.Collections.Generic.IList{System.Single},System.Collections.Generic.IList{System.Single},System.Int32,System.Boolean,System.Boolean,System.Boolean)">
+            <summary>
+            Adds a tube with circle section.
+            </summary>
+            <param name="path">
+            A list of points defining the centers of the tube.
+            </param>
+            <param name="values">
+            The texture coordinate X-values.
+            </param>
+            <param name="diameters">
+            The diameters.
+            </param>
+            <param name="thetaDiv">
+            The number of divisions around the tube.
+            </param>
+            <param name="isTubeClosed">
+            Set to true if the tube path is closed.
+            </param>
+            <param name="frontCap">
+            Create a front Cap or not.
+            </param>
+            <param name="backCap">
+            Create a back Cap or not.
+            </param>
+        </member>
+        <member name="M:HelixToolkit.Geometry.MeshBuilder.AddTube(System.Collections.Generic.IList{System.Numerics.Vector3},System.Collections.Generic.IList{System.Single},System.Collections.Generic.IList{System.Single},System.Collections.Generic.IList{System.Numerics.Vector2},System.Nullable{System.Numerics.Vector3},System.Boolean,System.Boolean,System.Boolean,System.Boolean)">
+            <summary>
+            Adds a tube with a custom section.
+            </summary>
+            <param name="path">
+            A list of points defining the centers of the tube.
+            </param>
+            <param name="values">
+            The texture coordinate X values (optional).
+            </param>
+            <param name="sectionScales">
+            The scales of the section (optional).
+            </param>
+            <param name="section">
+            The section to extrude along the tube path.
+            </param>
+            / <param name="sectionXAxis">
+            The initial alignment of the x-axis of the section into the 3D viewport
+            </param>
+            <param name="isTubeClosed">
+            If the tube is closed set to <c>true</c> .
+            </param>
+            <param name="isSectionClosed">
+            if set to <c>true</c> [is section closed].
+            </param>
+            <param name="frontCap">
+            Create a front Cap or not.
+            </param>
+            <param name="backCap">
+            Create a back Cap or not.
+            </param>
+        </member>
+        <member name="M:HelixToolkit.Geometry.MeshBuilder.AddTube(System.Collections.Generic.IList{System.Numerics.Vector3},System.Collections.Generic.IList{System.Single},System.Collections.Generic.IList{System.Single},System.Collections.Generic.IList{System.Single},System.Collections.Generic.IList{System.Numerics.Vector2},System.Numerics.Vector3,System.Boolean,System.Boolean,System.Boolean,System.Boolean)">
+            <summary>
+            Adds a tube with a custom section.
+            <para>
+            Limitation: using <paramref name="xTextureCoordinates"/>
+            with <paramref  name="isTubeClosed"/> = true 
+            or <paramref name="isSectionClosed"/> = true 
+            will be incorrect texture at the last of mesh
+            </para>
+            </summary>
+            <param name="path">
+            A list of points defining the centers of the tube.
+            </param>
+            <param name="sectionAngles">
+            The rotation of the section as it moves along the path, in radian.
+            </param>
+            <param name="xTextureCoordinates">
+            The texture coordinate X values (optional).
+            </param>
+            <param name="sectionScales">
+            The scales of the section (optional).
+            </param>
+            <param name="section">
+            The section to extrude along the tube path.
+            </param>
+            / <param name="sectionXAxis">
+            The initial alignment of the x-axis of the section into the 3D viewport
+            </param>
+            <param name="isTubeClosed">
+            If the tube is closed set to <c>true</c> .
+            </param>
+            <param name="isSectionClosed">
+            if set to <c>true</c> [is section closed].
+            </param>
+            <param name="frontCap">
+            Create a front Cap or not.
+            </param>
+            <param name="backCap">
+            Create a back Cap or not.
+            </param>
+        </member>
+        <member name="M:HelixToolkit.Geometry.MeshBuilder.CreateSectionPerpendicularToDirection(System.Collections.Generic.IList{System.Numerics.Vector2},System.Numerics.Vector3,System.Numerics.Vector3,System.Numerics.Vector3,System.Single,System.Single)">
+            <summary>
+            Apply 2D section on to a direction in 3D
+            </summary>
+            <param name="section"></param>
+            <param name="sectionXAxis"></param>
+            <param name="origin"></param>
+            <param name="direction"></param>
+            <param name="angle"></param>
+            <param name="sectionScale"></param>
+            <returns></returns>
+        </member>
+        <member name="M:HelixToolkit.Geometry.MeshBuilder.Append(HelixToolkit.Geometry.MeshBuilder)">
+            <summary>
+            Appends the specified mesh.
+            </summary>
+            <param name="mesh">
+            The mesh.
+            </param>
+        </member>
+        <member name="M:HelixToolkit.Geometry.MeshBuilder.Append(HelixToolkit.Geometry.MeshGeometry3D)">
+            <summary>
+            Appends the specified mesh.
+            </summary>
+            <param name="mesh">
+            The mesh.
+            </param>
+        </member>
+        <member name="M:HelixToolkit.Geometry.MeshBuilder.Append(System.Collections.Generic.IList{System.Numerics.Vector3},System.Collections.Generic.IList{System.Int32},System.Collections.Generic.IList{System.Numerics.Vector3},System.Collections.Generic.IList{System.Numerics.Vector2})">
+            <summary>
+            Appends the specified points and triangles.
+            </summary>
+            <param name="positionsToAppend">
+            The points to append.
+            </param>
+            <param name="triangleIndicesToAppend">
+            The triangle indices to append.
+            </param>
+            <param name="normalsToAppend">
+            The normal vectors to append.
+            </param>
+            <param name="textureCoordinatesToAppend">
+            The texture coordinates to append.
+            </param>
+        </member>
+        <member name="M:HelixToolkit.Geometry.MeshBuilder.ChamferCorner(System.Numerics.Vector3,System.Single,System.Single,System.Collections.Generic.IList{System.Numerics.Vector3})">
+            <summary>
+            Chamfers the specified corner (experimental code).
+            </summary>
+            <param name="p">
+            The corner point.
+            </param>
+            <param name="d">
+            The chamfer distance.
+            </param>
+            <param name="eps">
+            The corner search limit distance.
+            </param>
+            <param name="chamferPoints">
+            If this parameter is provided, the collection will be filled with the generated chamfer points.
+            </param>
+        </member>
+        <member name="M:HelixToolkit.Geometry.MeshBuilder.CheckPerformanceLimits">
+            <summary>
+            Checks the performance limits.
+            </summary>
+            <remarks>
+            See <a href="https://msdn.microsoft.com/en-us/library/bb613553(v=vs.100).aspx">MSDN</a>.
+            Try to keep mesh sizes under these limits:
+            Positions : 20,001 point instances
+            TriangleIndices : 60,003 integer instances
+            </remarks>
+        </member>
+        <member name="M:HelixToolkit.Geometry.MeshBuilder.FindCornerNormal(System.Numerics.Vector3,System.Single)">
+            <summary>
+            Finds the average normal to the specified corner (experimental code).
+            </summary>
+            <param name="p">
+            The corner point.
+            </param>
+            <param name="eps">
+            The corner search limit distance.
+            </param>
+            <returns>
+            The normal.
+            </returns>
+        </member>
+        <member name="M:HelixToolkit.Geometry.MeshBuilder.NoSharedVertices">
+            <summary>
+            Makes sure no triangles share the same vertex.
+            </summary>
+        </member>
+        <member name="M:HelixToolkit.Geometry.MeshBuilder.Scale(System.Single,System.Single,System.Single)">
+            <summary>
+            Scales the positions (and normal vectors).
+            </summary>
+            <param name="scaleX">
+            The X scale factor.
+            </param>
+            <param name="scaleY">
+            The Y scale factor.
+            </param>
+            <param name="scaleZ">
+            The Z scale factor.
+            </param>
+        </member>
+        <member name="M:HelixToolkit.Geometry.MeshBuilder.Subdivide4">
+            <summary>
+            Subdivides each triangle into four sub-triangles.
+            </summary>
+        </member>
+        <member name="M:HelixToolkit.Geometry.MeshBuilder.SubdivideBarycentric">
+            <summary>
+            Subdivides each triangle into six triangles. Adds a vertex at the midpoint of each triangle.
+            </summary>
+            <remarks>
+            See <a href="http://en.wikipedia.org/wiki/Barycentric_subdivision">wikipedia</a>.
+            </remarks>
+        </member>
+        <member name="M:HelixToolkit.Geometry.MeshBuilder.SubdivideLinear(System.Boolean)">
+            <summary>
+            Performs a linear subdivision of the mesh.
+            </summary>
+            <param name="barycentric">
+            Add a vertex in the center if set to <c>true</c> .
+            </param>
+        </member>
+        <member name="M:HelixToolkit.Geometry.MeshBuilder.ToMesh">
+            <summary>
+            Converts the geometry to a <see cref="T:HelixToolkit.Geometry.MeshGeometry3D"/>.
+            All internal mesh builder data are directly assigned to the <see cref="T:HelixToolkit.Geometry.MeshGeometry3D"/> without copying.
+            User must call <see cref="M:HelixToolkit.Geometry.MeshBuilder.Reset"/> to reset and reuse the mesh builder object to create new meshes.
+            </summary>
+            <returns>
+            A mesh geometry.
+            </returns>
+        </member>
+        <member name="M:HelixToolkit.Geometry.MeshBuilder.AppendSphere(System.Numerics.Vector3,System.Single,System.Int32,System.Int32)">
+            <summary>
+            Tesselates the element and returns a MeshGeometry3D representing the 
+            tessellation based on the parameters given 
+            </summary>        
+        </member>
+        <member name="T:HelixToolkit.Geometry.MeshFaces">
+            <summary>
+            MeshFaces.
+            </summary>
+        </member>
+        <member name="F:HelixToolkit.Geometry.MeshFaces.Default">
+            <summary>
+            Normal Face (3 Points).
+            </summary>
+        </member>
+        <member name="F:HelixToolkit.Geometry.MeshFaces.QuadPatches">
+            <summary>
+            Face with 4 Points.
+            </summary>
+        </member>
+        <member name="T:HelixToolkit.Geometry.MeshGeometry3D">
+            <summary>
+            TODO
+            </summary>
+        </member>
+        <member name="T:HelixToolkit.Geometry.MeshGeometryHelper">
+            <summary>
+            Provides helper methods for mesh geometries.
+            </summary>
+        </member>
+        <member name="M:HelixToolkit.Geometry.MeshGeometryHelper.CalculateNormals(HelixToolkit.Geometry.MeshGeometry3D)">
+            <summary>
+            Calculates the normal vectors.
+            </summary>
+            <param name="mesh">
+            The mesh.
+            </param>
+            <returns>
+            Collection of normal vectors.
+            </returns>
+        </member>
+        <member name="M:HelixToolkit.Geometry.MeshGeometryHelper.CalculateNormals(System.Collections.Generic.IList{System.Numerics.Vector3},System.Collections.Generic.IList{System.Int32})">
+            <summary>
+            Calculates the normal vectors.
+            </summary>
+            <param name="positions">
+            The positions.
+            </param>
+            <param name="triangleIndices">
+            The triangle indices.
+            </param>
+            <returns>
+            Collection of normal vectors.
+            </returns>
+        </member>
+        <member name="M:HelixToolkit.Geometry.MeshGeometryHelper.FindBorderEdges(HelixToolkit.Geometry.MeshGeometry3D)">
+            <summary>
+            Finds edges that are only connected to one triangle.
+            </summary>
+            <param name="mesh">
+            A mesh geometry.
+            </param>
+            <returns>
+            The edge indices for the edges that are only used by one triangle.
+            </returns>
+        </member>
+        <member name="M:HelixToolkit.Geometry.MeshGeometryHelper.FindEdges(HelixToolkit.Geometry.MeshGeometry3D)">
+            <summary>
+            Finds all edges in the mesh (each edge is only included once).
+            </summary>
+            <param name="mesh">
+            A mesh geometry.
+            </param>
+            <returns>
+            The edge indices (minimum index first).
+            </returns>
+        </member>
+        <member name="M:HelixToolkit.Geometry.MeshGeometryHelper.FindSharpEdges(HelixToolkit.Geometry.MeshGeometry3D,System.Single)">
+            <summary>
+            Finds all edges where the angle between adjacent triangle normal vectors.
+            is larger than minimumAngle
+            </summary>
+            <param name="mesh">
+            A mesh geometry.
+            </param>
+            <param name="minimumAngle">
+            The minimum angle between the normal vectors of two adjacent triangles (degrees).
+            </param>
+            <returns>
+            The edge indices.
+            </returns>
+        </member>
+        <member name="M:HelixToolkit.Geometry.MeshGeometryHelper.NoSharedVertices(HelixToolkit.Geometry.MeshGeometry3D)">
+            <summary>
+            Creates a new mesh where no vertices are shared.
+            </summary>
+            <param name="input">
+            The input mesh.
+            </param>
+            <returns>
+            A new mesh.
+            </returns>
+        </member>
+        <member name="M:HelixToolkit.Geometry.MeshGeometryHelper.Simplify(HelixToolkit.Geometry.MeshGeometry3D,System.Single)">
+            <summary>
+            Simplifies the specified mesh.
+            </summary>
+            <param name="mesh">
+            The mesh.
+            </param>
+            <param name="eps">
+            The tolerance.
+            </param>
+            <returns>
+            A simplified mesh.
+            </returns>
+        </member>
+        <member name="M:HelixToolkit.Geometry.MeshGeometryHelper.Validate(HelixToolkit.Geometry.MeshGeometry3D)">
+            <summary>
+            Validates the specified mesh.
+            </summary>
+            <param name="mesh">The mesh.</param>
+            <returns>Validation report or null if no issues were found.</returns>
+        </member>
+        <member name="M:HelixToolkit.Geometry.MeshGeometryHelper.Cut(HelixToolkit.Geometry.MeshGeometry3D,System.Numerics.Plane)">
+            <summary>
+            Cuts the mesh with the specified plane.
+            </summary>
+            <param name="mesh">The mesh.</param>
+            <param name="plane">The plane</param>
+            <returns>
+            The new cutted <see cref="T:HelixToolkit.Geometry.MeshGeometry3D"/> by the plane.
+            </returns>
+        </member>
+        <member name="M:HelixToolkit.Geometry.MeshGeometryHelper.Cut(HelixToolkit.Geometry.MeshGeometry3D,System.Numerics.Vector3,System.Numerics.Vector3)">
+            <summary>
+            Cuts the mesh with the specified plane.
+            </summary>
+            <param name="mesh">
+            The mesh.
+            </param>
+            <param name="planeOrigin">
+            The plane origin.
+            </param>
+            <param name="planeNormal">
+            The plane normal.
+            </param>
+            <returns>
+            The new cutted <see cref="T:HelixToolkit.Geometry.MeshGeometry3D"/> by the plane.
+            </returns>
+        </member>
+        <member name="M:HelixToolkit.Geometry.MeshGeometryHelper.GetContourSegments(HelixToolkit.Geometry.MeshGeometry3D,System.Numerics.Plane)">
+            <summary>
+            Gets the contour segments.
+            </summary>
+            <param name="mesh">The mesh.</param>
+            <param name="plane">The plane.</param>
+            <returns></returns>
+        </member>
+        <member name="M:HelixToolkit.Geometry.MeshGeometryHelper.GetContourSegments(HelixToolkit.Geometry.MeshGeometry3D,System.Numerics.Vector3,System.Numerics.Vector3)">
+            <summary>
+            Gets the contour segments.
+            </summary>
+            <param name="mesh">
+            The mesh.
+            </param>
+            <param name="planeOrigin">
+            The plane origin.
+            </param>
+            <param name="planeNormal">
+            The plane normal.
+            </param>
+            <returns>
+            The segments of the contour.
+            </returns>
+        </member>
+        <member name="M:HelixToolkit.Geometry.MeshGeometryHelper.CombineSegments(System.Collections.Generic.IList{System.Numerics.Vector3},System.Single)">
+            <summary>
+            Combines the segments.
+            </summary>
+            <param name="segments">
+            The segments.
+            </param>
+            <param name="eps">
+            The tolerance.
+            </param>
+            <returns>
+            Enumerated connected contour curves.
+            </returns>
+        </member>
+        <member name="M:HelixToolkit.Geometry.MeshGeometryHelper.CreateKey(System.UInt32,System.UInt32)">
+            <summary>
+            Create a 64-bit key from two 32-bit indices
+            </summary>
+            <param name="i0">
+            The i 0.
+            </param>
+            <param name="i1">
+            The i 1.
+            </param>
+            <returns>
+            The create key.
+            </returns>
+        </member>
+        <member name="M:HelixToolkit.Geometry.MeshGeometryHelper.ReverseKey(System.UInt64,System.UInt32@,System.UInt32@)">
+            <summary>
+            Extract two 32-bit indices from the 64-bit key
+            </summary>
+            <param name="key">
+            The key.
+            </param>
+            <param name="i0">
+            The i 0.
+            </param>
+            <param name="i1">
+            The i 1.
+            </param>
+        </member>
+        <member name="M:HelixToolkit.Geometry.MeshGeometryHelper.FindConnectedSegment(System.Collections.Generic.IList{System.Numerics.Vector3},System.Numerics.Vector3,System.Single)">
+            <summary>
+            Finds the nearest connected segment to the specified point.
+            </summary>
+            <param name="segments">
+            The segments.
+            </param>
+            <param name="point">
+            The point.
+            </param>
+            <param name="eps">
+            The tolerance.
+            </param>
+            <returns>
+            The index of the nearest point.
+            </returns>
+        </member>
+        <member name="M:HelixToolkit.Geometry.MeshGeometryHelper.RemoveIsolatedVertices(HelixToolkit.Geometry.MeshGeometry3D)">
+            <summary>
+            Remove isolated(not connected to any triangles) vertices
+            </summary>
+            <param name="mesh"></param>
+            <returns></returns>
+        </member>
+        <member name="M:HelixToolkit.Geometry.MeshGeometryHelper.RemoveIsolatedVertices(System.Collections.Generic.IList{System.Numerics.Vector3},System.Collections.Generic.IList{System.Int32},System.Collections.Generic.IList{System.Numerics.Vector2},System.Collections.Generic.IList{System.Numerics.Vector3},System.Collections.Generic.IList{System.Numerics.Vector3}@,System.Collections.Generic.IList{System.Int32}@,System.Collections.Generic.IList{System.Numerics.Vector2}@,System.Collections.Generic.IList{System.Numerics.Vector3}@)">
+            <summary>
+            Remove isolated(not connected to any triangles) vertices
+            </summary>
+            <param name="vertices"></param>
+            <param name="triangles"></param>
+            <param name="texture"></param>
+            <param name="normals"></param>
+            <param name="verticesOut"></param>
+            <param name="trianglesOut"></param>
+            <param name="textureOut"></param>
+            <param name="normalOut"></param>
+        </member>
+        <member name="M:HelixToolkit.Geometry.MeshGeometryHelper.RemoveOutOfRangeTriangles(System.Collections.Generic.IList{System.Int32},System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="triangles"></param>
+            <param name="numVerts"></param>
+        </member>
+        <member name="T:HelixToolkit.Geometry.MeshSimplification">
+            <summary>
+            Fast-Quadric-Mesh-Simplification, port from https://github.com/sp4cerat/Fast-Quadric-Mesh-Simplification
+            </summary>
+        </member>
+        <member name="M:HelixToolkit.Geometry.MeshSimplification.#ctor(HelixToolkit.Geometry.MeshGeometry3D)">
+            <summary>
+            
+            </summary>
+            <param name="model"></param>
+        </member>
+        <member name="M:HelixToolkit.Geometry.MeshSimplification.Simplify(System.Boolean)">
+            <summary>
+            
+            </summary>
+            <param name="verbose"></param>
+            <returns></returns>
+        </member>
+        <member name="M:HelixToolkit.Geometry.MeshSimplification.Simplify(System.Int32,System.Single,System.Boolean,System.Boolean)">
+            <summary>
+            Mesh Simplification using Fast-Quadric-Mesh-Simplification
+            </summary>
+            <param name="targetCount">Target Number of Triangles</param>
+            <param name="aggressive">sharpness to increase the threshold, 5->8 are usually good, more iteration yields higher quality</param>
+            <param name="verbose"></param>
+            <param name="lossless"></param>
+            <returns></returns>
+        </member>
+        <member name="M:HelixToolkit.Geometry.MeshSimplification.GetMesh">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:HelixToolkit.Geometry.Polygon">
+            <summary>
+            Represents a 2D polygon.
+            </summary>
+        </member>
+        <member name="P:HelixToolkit.Geometry.Polygon.Points">
+            <summary>
+            Gets or sets the points.
+            </summary>
+            <value>The points.</value>
+        </member>
+        <member name="M:HelixToolkit.Geometry.Polygon.Triangulate">
+            <summary>
+            Triangulate the polygon by using the sweep line algorithm
+            </summary>
+            <returns>An index collection.</returns>
+        </member>
+        <member name="T:HelixToolkit.Geometry.Polygon3D">
+            <summary>
+            Represents a 3D polygon.
+            </summary>
+        </member>
+        <member name="M:HelixToolkit.Geometry.Polygon3D.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref = "T:HelixToolkit.Geometry.Polygon3D" /> class.
+            </summary>
+        </member>
+        <member name="M:HelixToolkit.Geometry.Polygon3D.#ctor(System.Collections.Generic.IList{System.Numerics.Vector3})">
+            <summary>
+            Initializes a new instance of the <see cref="T:HelixToolkit.Geometry.Polygon3D"/> class.
+            </summary>
+            <param name="pts">
+            The PTS.
+            </param>
+        </member>
+        <member name="P:HelixToolkit.Geometry.Polygon3D.Points">
+            <summary>
+            Gets or sets the points.
+            </summary>
+            <value>The points.</value>
+        </member>
+        <member name="M:HelixToolkit.Geometry.Polygon3D.Flatten">
+            <summary>
+            Flattens this polygon.
+            </summary>
+            <returns>
+            The 2D polygon.
+            </returns>
+        </member>
+        <member name="M:HelixToolkit.Geometry.Polygon3D.GetNormal">
+            <summary>
+            Gets the normal of the polygon.
+            </summary>
+            <returns>
+            The normal.
+            </returns>
+        </member>
+        <member name="M:HelixToolkit.Geometry.Polygon3D.IsPlanar">
+            <summary>
+            Determines whether this polygon is planar.
+            </summary>
+            <returns>
+            The is planar.
+            </returns>
+        </member>
+        <member name="T:HelixToolkit.Geometry.PolygonData">
+            <summary>
+            Helper Class for the Polygon-Triangulation.
+            </summary>
+        </member>
+        <member name="P:HelixToolkit.Geometry.PolygonData.Points">
+            <summary>
+            The List of Polygonpoints that define this Polygon
+            </summary>
+        </member>
+        <member name="P:HelixToolkit.Geometry.PolygonData.HasHoles">
+            <summary>
+            Are there Holes present
+            </summary>
+        </member>
+        <member name="P:HelixToolkit.Geometry.PolygonData.Holes">
+            <summary>
+            The Holes of the Polygon
+            </summary>
+        </member>
+        <member name="M:HelixToolkit.Geometry.PolygonData.#ctor(System.Collections.Generic.List{System.Numerics.Vector2},System.Collections.Generic.List{System.Int32})">
+            <summary>
+            Constructor that uses a List of Points and an optional List of Point-Indices
+            </summary>
+            <param name="points">The Polygon-Defining Points</param>
+            <param name="indices">Optional List of Point-Indices</param>
+        </member>
+        <member name="M:HelixToolkit.Geometry.PolygonData.#ctor(System.Collections.Generic.List{HelixToolkit.Geometry.PolygonPoint})">
+            <summary>
+            Constructor that takes a List of PolygonPoints
+            Calls the first Constructor by splitting the Input-Information (Points and Indices)
+            </summary>
+            <param name="points">The PolygonPoints</param>
+        </member>
+        <member name="M:HelixToolkit.Geometry.PolygonData.AddHole(System.Collections.Generic.List{System.Numerics.Vector2})">
+            <summary>
+            Add Points of a Hole to the PolygonData
+            </summary>
+            <param name="points">The Points that define the Hole in the Polygon</param>
+        </member>
+        <member name="T:HelixToolkit.Geometry.PolygonEdge">
+            <summary>
+            Helper Class for the PolygonData Object.
+            </summary>
+        </member>
+        <member name="P:HelixToolkit.Geometry.PolygonEdge.PointOne">
+            <summary>
+            The "starting" Point of this Edge
+            </summary>
+        </member>
+        <member name="P:HelixToolkit.Geometry.PolygonEdge.PointTwo">
+            <summary>
+            The "ending" Point of this Edge
+            </summary>
+        </member>
+        <member name="P:HelixToolkit.Geometry.PolygonEdge.Last">
+            <summary>
+            The "last" neighboring Edge, which both share the Startpoint of this Edge
+            </summary>
+        </member>
+        <member name="P:HelixToolkit.Geometry.PolygonEdge.Next">
+            <summary>
+            The "next" neighboring Edge, which both share the Endpoint of this Edge
+            </summary>
+        </member>
+        <member name="M:HelixToolkit.Geometry.PolygonEdge.#ctor(HelixToolkit.Geometry.PolygonPoint,HelixToolkit.Geometry.PolygonPoint)">
+            <summary>
+            Constructor that takes both Points of the Edge
+            </summary>
+            <param name="one">The Startpoint</param>
+            <param name="two">The Endpoint</param>
+        </member>
+        <member name="M:HelixToolkit.Geometry.PolygonEdge.ToString">
+            <summary>
+            Override the ToString (for Debugging Purposes)
+            </summary>
+            <returns>String representing this Edge</returns>
+        </member>
+        <member name="T:HelixToolkit.Geometry.PolygonPoint">
+            <summary>
+            Helper Class for the PolygonData Object.
+            </summary>
+        </member>
+        <member name="F:HelixToolkit.Geometry.PolygonPoint.mPoint">
+            <summary>
+            The actual Point of this PolygonPoint
+            </summary>
+        </member>
+        <member name="P:HelixToolkit.Geometry.PolygonPoint.Point">
+            <summary>
+            Accessor for the Point-Data
+            </summary>
+        </member>
+        <member name="P:HelixToolkit.Geometry.PolygonPoint.X">
+            <summary>
+            Accessor for the X-Coordinate of the Point
+            </summary>
+        </member>
+        <member name="P:HelixToolkit.Geometry.PolygonPoint.Y">
+            <summary>
+            Accessor for the Y-Coordinate of the Point
+            </summary>
+        </member>
+        <member name="P:HelixToolkit.Geometry.PolygonPoint.EdgeOne">
+            <summary>
+            The "incoming" Edge of this PolygonPoint
+            </summary>
+        </member>
+        <member name="P:HelixToolkit.Geometry.PolygonPoint.EdgeTwo">
+            <summary>
+            The "outgoing" Edge of this PolygonPoint
+            </summary>
+        </member>
+        <member name="P:HelixToolkit.Geometry.PolygonPoint.Index">
+            <summary>
+            The Index of this Point in the original Polygon
+            that needs to be triangulated
+            </summary>
+        </member>
+        <member name="P:HelixToolkit.Geometry.PolygonPoint.Last">
+            <summary>
+            The "last" neighboring Point, which is connected throught the incoming Edge
+            </summary>
+        </member>
+        <member name="P:HelixToolkit.Geometry.PolygonPoint.Next">
+            <summary>
+            The "next" neighboring Point, which is connected throught the outgoing Edge
+            </summary>
+        </member>
+        <member name="M:HelixToolkit.Geometry.PolygonPoint.op_LessThan(HelixToolkit.Geometry.PolygonPoint,HelixToolkit.Geometry.PolygonPoint)">
+            <summary>
+            Comparison Operator, that is used to determine the Class of the PolygonPoints
+            </summary>
+            <param name="first">The first PolygonPoint</param>
+            <param name="second">The second PolygonPoint</param>
+            <returns>Returns true if the first PolygonPoint is smaller, compared to the second PolygonPoint, false otherwise</returns>
+        </member>
+        <member name="M:HelixToolkit.Geometry.PolygonPoint.op_GreaterThan(HelixToolkit.Geometry.PolygonPoint,HelixToolkit.Geometry.PolygonPoint)">
+            <summary>
+            Comparison Operator, that is used to determine the Class of the PolygonPoints
+            </summary>
+            <param name="first">The first PolygonPoint</param>
+            <param name="second">The second PolygonPoint</param>
+            <returns>Returns true if the first PolygonPoint is bigger, compared to the second PolygonPoint, false otherwise</returns>
+        </member>
+        <member name="M:HelixToolkit.Geometry.PolygonPoint.#ctor(System.Numerics.Vector2)">
+            <summary>
+            Constructor using a Point
+            </summary>
+            <param name="p">The Point-Data to use</param>
+        </member>
+        <member name="M:HelixToolkit.Geometry.PolygonPoint.PointClass(System.Boolean)">
+            <summary>
+            Detrmines the Class of the PolygonPoint, depending on the sweeping Direction
+            </summary>
+            <param name="reverse">The Sweeping direction, top-to-bottom if false, bottom-to-top otherwise</param>
+            <returns>The Class of the PolygonPoint</returns>
+        </member>
+        <member name="M:HelixToolkit.Geometry.PolygonPoint.IsConvexPoint">
+            <summary>
+            Calculates for a Point, if it is a convex Point or not
+            (the assumption is, that we are dealing with a CCW Polygon orientation!)
+            </summary>
+            <returns>Returns true, if convex, false if concave (or "reflex" Vertex)</returns>
+        </member>
+        <member name="M:HelixToolkit.Geometry.PolygonPoint.ToString">
+            <summary>
+            Override the ToString (for Debugging Purposes)
+            </summary>
+            <returns>String representing this Point</returns>
+        </member>
+        <member name="M:HelixToolkit.Geometry.PolygonPoint.CompareTo(HelixToolkit.Geometry.PolygonPoint)">
+            <summary>
+            Comparison of two Points, used to sort the Polygons from top to bottom (left to right)
+            </summary>
+            <param name="second">Other Point to compare to</param>
+            <returns>-1 if this Point is bigger, 0 if the same, 1 if smaller</returns>
+        </member>
+        <member name="T:HelixToolkit.Geometry.PolygonPointClass">
+            <summary>
+            Enumeration of PolygonPoint - Classes
+            </summary>
+        </member>
+        <member name="T:HelixToolkit.Geometry.StatusHelper">
+            <summary>
+            Helper Class that is used in the calculation Process of the Diagonals.
+            </summary>
+        </member>
+        <member name="P:HelixToolkit.Geometry.StatusHelper.EdgesHelpers">
+            <summary>
+            List of StatusHelperElements that are currently present at the Sweeper's Position
+            </summary>
+        </member>
+        <member name="M:HelixToolkit.Geometry.StatusHelper.Add(HelixToolkit.Geometry.StatusHelperElement)">
+            <summary>
+            Adds a StatusHelperElement to the List
+            </summary>
+            <param name="element"></param>
+        </member>
+        <member name="M:HelixToolkit.Geometry.StatusHelper.Remove(HelixToolkit.Geometry.PolygonEdge)">
+            <summary>
+            Removes all StatusHelperElements with a specific Edge
+            </summary>
+            <param name="edge"></param>
+        </member>
+        <member name="M:HelixToolkit.Geometry.StatusHelper.SearchLeft(HelixToolkit.Geometry.PolygonPoint)">
+            <summary>
+            Searches the nearest StatusHelperElement from the given Point
+            </summary>
+            <param name="point">The Point to search a StatusHelperElement for</param>
+            <returns>The nearest StatusHelperElement that is positioned left of the Poin</returns>
+        </member>
+        <member name="T:HelixToolkit.Geometry.StatusHelperElement">
+            <summary>
+            Helper Class that is used in the calculation Process of the Diagonals.
+            </summary>
+        </member>
+        <member name="P:HelixToolkit.Geometry.StatusHelperElement.Edge">
+            <summary>
+            The Edge of the StatusHelperElement
+            </summary>
+        </member>
+        <member name="P:HelixToolkit.Geometry.StatusHelperElement.Helper">
+            <summary>
+            The Helper of the Edge is a Polygon Point
+            </summary>
+        </member>
+        <member name="P:HelixToolkit.Geometry.StatusHelperElement.Factor">
+            <summary>
+            Factor used for x-Value Calculation
+            </summary>
+        </member>
+        <member name="P:HelixToolkit.Geometry.StatusHelperElement.MinX">
+            <summary>
+            Used to early-skip the Search for the right Status and Helper
+            </summary>
+        </member>
+        <member name="M:HelixToolkit.Geometry.StatusHelperElement.#ctor(HelixToolkit.Geometry.PolygonEdge,HelixToolkit.Geometry.PolygonPoint)">
+            <summary>
+            Constructor taking an Edge and a Helper
+            </summary>
+            <param name="edge">The Edge of the StatusHelperElement</param>
+            <param name="point">The Helper for the Edge of the StatusHelperElement</param>
+        </member>
+        <member name="T:HelixToolkit.Geometry.SweepLinePolygonTriangulator">
+            <summary>
+            Triangulate a simple Polygon with the Sweep-Line Algorithm
+            </summary>
+            <remarks>
+            Based on http://www.cs.uu.nl/docs/vakken/ga/slides3.pdf
+            References
+            https://www.cs.ucsb.edu/~suri/cs235/Triangulation.pdf
+            </remarks>
+        </member>
+        <member name="F:HelixToolkit.Geometry.SweepLinePolygonTriangulator.Epsilon">
+            <summary>
+            Range Extension when searching for the Helper and Edge
+            </summary>
+        </member>
+        <member name="M:HelixToolkit.Geometry.SweepLinePolygonTriangulator.Triangulate(System.Collections.Generic.IList{System.Numerics.Vector2},System.Collections.Generic.List{System.Collections.Generic.List{System.Numerics.Vector2}})">
+            <summary>
+            Perform the Triangulation of the Input.
+            </summary>
+            <param name="polygon">The Input Polygon</param>
+            <param name="holes">The Input Polygon</param>
+            <returns>List of Indices representing the Triangulation of the Polygon</returns>
+        </member>
+        <member name="M:HelixToolkit.Geometry.SweepLinePolygonTriangulator.TriangulateMonotone(HelixToolkit.Geometry.PolygonData)">
+            <summary>
+            Triangulate the y-Monotone Polygons.
+            </summary>
+            <param name="monoton">The y-Monotone Polygon to triangle</param>
+            <returns>Index-List of Polygon Points (Indices from the original Polygon)</returns>
+        </member>
+        <member name="M:HelixToolkit.Geometry.SweepLinePolygonTriangulator.CalculateDiagonals(System.Collections.Generic.List{HelixToolkit.Geometry.PolygonPoint},System.Boolean)">
+            <summary>
+            Calculate the Diagonals to add inside the Polygon.
+            </summary>
+            <param name="events">The Events in sorted Form</param>
+            <param name="sweepDown">True in the first Stage (sweeping down), false in the following Stages (sweeping up)</param>
+            <returns></returns>
+        </member>
+        <member name="M:HelixToolkit.Geometry.SweepLinePolygonTriangulator.SplitIntoPolygons(HelixToolkit.Geometry.PolygonData,System.Collections.Generic.List{System.Tuple{System.Int32,System.Int32}})">
+            <summary>
+            Split Polygon into subpolagons using the calculated Diagonals
+            </summary>
+            <param name="poly">The Base-Polygon</param>
+            <param name="diagonals">The Split-Diagonals</param>
+            <returns>List of Subpolygons</returns>
+        </member>
+        <member name="M:HelixToolkit.Geometry.SweepLinePolygonTriangulator.BestEdge(HelixToolkit.Geometry.PolygonPoint,HelixToolkit.Geometry.PolygonEdge,System.Collections.Generic.List{HelixToolkit.Geometry.PolygonEdge})">
+            <summary>
+            For a Point, last used Edge and possible Edges, retrieve the best next Edge
+            </summary>
+            <param name="point">The current Point</param>
+            <param name="lastEdge">The last used Edge</param>
+            <param name="possibleEdges">The possible next Edges</param>
+            <returns>Best next Edge</returns>
+        </member>
+        <member name="M:HelixToolkit.Geometry.SweepLinePolygonTriangulator.IsCCW(System.Collections.Generic.IList{System.Numerics.Vector2})">
+            <summary>
+            Calculates the Orientation of a Polygon by usings it's (double-) Area as an Indicator.
+            </summary>
+            <param name="polygon">The Polygon.</param>
+            <returns>True if the Polygon is present in a CCW manner.</returns>
+        </member>
+        <member name="T:System.Diagnostics.CodeAnalysis.AllowNullAttribute">
+            <summary>
+            Specifies that null is allowed as an input even if the corresponding type disallows it.
+            </summary>
+        </member>
+        <member name="T:System.Diagnostics.CodeAnalysis.ConstantExpectedAttribute">
+            <summary>
+            Indicates that the specified method parameter expects a constant.
+            </summary>
+            <remarks>
+            This can be used to inform tooling that a constant should be used as an argument for the annotated parameter.
+            </remarks>
+        </member>
+        <member name="P:System.Diagnostics.CodeAnalysis.ConstantExpectedAttribute.Min">
+            <summary>
+            Indicates the minimum bound of the expected constant, inclusive.
+            </summary>
+        </member>
+        <member name="P:System.Diagnostics.CodeAnalysis.ConstantExpectedAttribute.Max">
+            <summary>
+            Indicates the maximum bound of the expected constant, inclusive.
+            </summary>
+        </member>
+        <member name="T:System.Diagnostics.CodeAnalysis.DisallowNullAttribute">
+            <summary>
+            Specifies that null is disallowed as an input even if the corresponding type allows it.
+            </summary>
+        </member>
+        <member name="T:System.Diagnostics.CodeAnalysis.DoesNotReturnAttribute">
+            <summary>
+            Applied to a method that will never return under any circumstance.
+            </summary>
+        </member>
+        <member name="T:System.Diagnostics.CodeAnalysis.DoesNotReturnIfAttribute">
+            <summary>
+            Specifies that the method will not return if the associated Boolean parameter is passed the specified value.
+            </summary>
+        </member>
+        <member name="M:System.Diagnostics.CodeAnalysis.DoesNotReturnIfAttribute.#ctor(System.Boolean)">
+            <summary>
+            Initializes the attribute with the specified parameter value.
+            </summary>
+            <param name="parameterValue">
+            The condition parameter value. Code after the method will be considered unreachable
+            by diagnostics if the argument to the associated parameter matches this value.
+            </param>
+        </member>
+        <member name="P:System.Diagnostics.CodeAnalysis.DoesNotReturnIfAttribute.ParameterValue">
+            <summary>
+            Gets the condition parameter value.
+            </summary>
+        </member>
+        <member name="T:System.Diagnostics.CodeAnalysis.ExperimentalAttribute">
+            <summary>
+            Indicates that an API is experimental and it may change in the future.
+            </summary>
+            <remarks>
+            This attribute allows call sites to be flagged with a diagnostic that indicates that an experimental
+            feature is used. Authors can use this attribute to ship preview features in their assemblies.
+            </remarks>
+        </member>
+        <member name="M:System.Diagnostics.CodeAnalysis.ExperimentalAttribute.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:System.Diagnostics.CodeAnalysis.ExperimentalAttribute"/> class,
+            specifying the ID that the compiler will use when reporting a use of the API the attribute applies to.
+            </summary>
+            <param name="diagnosticId">The ID that the compiler will use when reporting a use of the API the attribute applies to.</param>
+        </member>
+        <member name="P:System.Diagnostics.CodeAnalysis.ExperimentalAttribute.DiagnosticId">
+            <summary>
+            Gets the ID that the compiler will use when reporting a use of the API the attribute applies to.
+            </summary>
+            <value>The unique diagnostic ID.</value>
+            <remarks>
+            The diagnostic ID is shown in build output for warnings and errors.
+            <para>This property represents the unique ID that can be used to suppress the warnings or errors, if needed.</para>
+            </remarks>
+        </member>
+        <member name="P:System.Diagnostics.CodeAnalysis.ExperimentalAttribute.UrlFormat">
+            <summary>
+            Gets or sets the URL for corresponding documentation.
+            The API accepts a format string instead of an actual URL, creating a generic URL that includes the diagnostic ID.
+            </summary>
+            <value>The format string that represents a URL to corresponding documentation.</value>
+            <remarks>An example format string is <c>https://contoso.com/obsoletion-warnings/{0}</c>.</remarks>
+        </member>
+        <member name="T:System.Diagnostics.CodeAnalysis.MaybeNullAttribute">
+            <summary>
+            Specifies that an output may be null even if the corresponding type disallows it.
+            </summary>
+        </member>
+        <member name="T:System.Diagnostics.CodeAnalysis.MaybeNullWhenAttribute">
+            <summary>
+            Specifies that when a method returns <see cref="P:System.Diagnostics.CodeAnalysis.MaybeNullWhenAttribute.ReturnValue"/>, the parameter may be null even if the corresponding type disallows it.
+            </summary>
+        </member>
+        <member name="M:System.Diagnostics.CodeAnalysis.MaybeNullWhenAttribute.#ctor(System.Boolean)">
+            <summary>
+            Initializes the attribute with the specified return value condition.
+            </summary>
+            <param name="returnValue">The return value condition. If the method returns this value, the associated parameter may be null.</param>
+        </member>
+        <member name="P:System.Diagnostics.CodeAnalysis.MaybeNullWhenAttribute.ReturnValue">
+            <summary>
+            Gets the return value condition.
+            </summary>
+        </member>
+        <member name="T:System.Diagnostics.CodeAnalysis.MemberNotNullAttribute">
+            <summary>
+            Specifies that the method or property will ensure that the listed field and property members have not-null values.
+            </summary>
+        </member>
+        <member name="M:System.Diagnostics.CodeAnalysis.MemberNotNullAttribute.#ctor(System.String)">
+            <summary>
+            Initializes the attribute with a field or property member.
+            </summary>
+            <param name="member">The field or property member that is promised to be not-null.</param>
+        </member>
+        <member name="M:System.Diagnostics.CodeAnalysis.MemberNotNullAttribute.#ctor(System.String[])">
+            <summary>
+            Initializes the attribute with the list of field and property members.
+            </summary>
+            <param name="members">The list of field and property members that are promised to be not-null.</param>
+        </member>
+        <member name="P:System.Diagnostics.CodeAnalysis.MemberNotNullAttribute.Members">
+            <summary>
+            Gets field or property member names.
+            </summary>
+        </member>
+        <member name="T:System.Diagnostics.CodeAnalysis.MemberNotNullWhenAttribute">
+            <summary>
+            Specifies that the method or property will ensure that the listed field and property
+            members have not-null values when returning with the specified return value condition.
+            </summary>
+        </member>
+        <member name="M:System.Diagnostics.CodeAnalysis.MemberNotNullWhenAttribute.#ctor(System.Boolean,System.String)">
+            <summary>
+            Initializes the attribute with the specified return value condition and a field or property member.
+            </summary>
+            <param name="returnValue">The return value condition. If the method returns this value, the associated parameter will not be null.</param>
+            <param name="member">The field or property member that is promised to be not-null.</param>
+        </member>
+        <member name="M:System.Diagnostics.CodeAnalysis.MemberNotNullWhenAttribute.#ctor(System.Boolean,System.String[])">
+            <summary>
+            Initializes the attribute with the specified return value condition and list of field and property members.
+            </summary>
+            <param name="returnValue">The return value condition. If the method returns this value, the associated parameter will not be null.</param>
+            <param name="members">The list of field and property members that are promised to be not-null.</param>
+        </member>
+        <member name="P:System.Diagnostics.CodeAnalysis.MemberNotNullWhenAttribute.ReturnValue">
+            <summary>
+            Gets the return value condition.
+            </summary>
+        </member>
+        <member name="P:System.Diagnostics.CodeAnalysis.MemberNotNullWhenAttribute.Members">
+            <summary>
+            Gets field or property member names.
+            </summary>
+        </member>
+        <member name="T:System.Diagnostics.CodeAnalysis.NotNullAttribute">
+            <summary>
+            Specifies that an output will not be null even if the corresponding type allows it.
+            Specifies that an input argument was not null when the call returns.
+            </summary>
+        </member>
+        <member name="T:System.Diagnostics.CodeAnalysis.NotNullIfNotNullAttribute">
+            <summary>
+            Specifies that the output will be non-null if the named parameter is non-null.
+            </summary>
+        </member>
+        <member name="M:System.Diagnostics.CodeAnalysis.NotNullIfNotNullAttribute.#ctor(System.String)">
+            <summary>
+            Initializes the attribute with the associated parameter name.
+            </summary>
+            <param name="parameterName">The associated parameter name. The output will be non-null if the argument to the parameter specified is non-null.</param>
+        </member>
+        <member name="P:System.Diagnostics.CodeAnalysis.NotNullIfNotNullAttribute.ParameterName">
+            <summary>
+            Gets the associated parameter name.
+            </summary>
+        </member>
+        <member name="T:System.Diagnostics.CodeAnalysis.NotNullWhenAttribute">
+            <summary>
+            Specifies that when a method returns <see cref="P:System.Diagnostics.CodeAnalysis.NotNullWhenAttribute.ReturnValue"/>, the parameter will not be null even if the corresponding type allows it.
+            </summary>
+        </member>
+        <member name="M:System.Diagnostics.CodeAnalysis.NotNullWhenAttribute.#ctor(System.Boolean)">
+            <summary>
+            Initializes the attribute with the specified return value condition.
+            </summary>
+            <param name="returnValue">The return value condition. If the method returns this value, the associated parameter will not be null.</param>
+        </member>
+        <member name="P:System.Diagnostics.CodeAnalysis.NotNullWhenAttribute.ReturnValue">
+            <summary>Gets the return value condition.</summary>
+        </member>
+        <member name="T:System.Diagnostics.CodeAnalysis.SetsRequiredMembersAttribute">
+            <summary>
+            Specifies that this constructor sets all required members for the current type,
+            and callers do not need to set any required members themselves.
+            </summary>
+        </member>
+        <member name="T:System.Diagnostics.CodeAnalysis.StringSyntaxAttribute">
+            <summary>
+            Specifies the syntax used in a string.
+            </summary>
+        </member>
+        <member name="M:System.Diagnostics.CodeAnalysis.StringSyntaxAttribute.#ctor(System.String)">
+            <summary>
+            Initializes the <see cref="T:System.Diagnostics.CodeAnalysis.StringSyntaxAttribute"/> with the identifier of the syntax used.
+            </summary>
+            <param name="syntax">The syntax identifier.</param>
+        </member>
+        <member name="M:System.Diagnostics.CodeAnalysis.StringSyntaxAttribute.#ctor(System.String,System.Object[])">
+            <summary>Initializes the <see cref="T:System.Diagnostics.CodeAnalysis.StringSyntaxAttribute"/> with the identifier of the syntax used.</summary>
+            <param name="syntax">The syntax identifier.</param>
+            <param name="arguments">Optional arguments associated with the specific syntax employed.</param>
+        </member>
+        <member name="P:System.Diagnostics.CodeAnalysis.StringSyntaxAttribute.Syntax">
+            <summary>Gets the identifier of the syntax used.</summary>
+        </member>
+        <member name="P:System.Diagnostics.CodeAnalysis.StringSyntaxAttribute.Arguments">
+            <summary>Optional arguments associated with the specific syntax employed.</summary>
+        </member>
+        <member name="F:System.Diagnostics.CodeAnalysis.StringSyntaxAttribute.CompositeFormat">
+            <summary>The syntax identifier for strings containing composite formats for string formatting.</summary>
+        </member>
+        <member name="F:System.Diagnostics.CodeAnalysis.StringSyntaxAttribute.DateOnlyFormat">
+            <summary>The syntax identifier for strings containing date format specifiers.</summary>
+        </member>
+        <member name="F:System.Diagnostics.CodeAnalysis.StringSyntaxAttribute.DateTimeFormat">
+            <summary>The syntax identifier for strings containing date and time format specifiers.</summary>
+        </member>
+        <member name="F:System.Diagnostics.CodeAnalysis.StringSyntaxAttribute.EnumFormat">
+            <summary>The syntax identifier for strings containing <see cref="T:System.Enum"/> format specifiers.</summary>
+        </member>
+        <member name="F:System.Diagnostics.CodeAnalysis.StringSyntaxAttribute.GuidFormat">
+            <summary>The syntax identifier for strings containing <see cref="T:System.Guid"/> format specifiers.</summary>
+        </member>
+        <member name="F:System.Diagnostics.CodeAnalysis.StringSyntaxAttribute.Json">
+            <summary>The syntax identifier for strings containing JavaScript Object Notation (JSON).</summary>
+        </member>
+        <member name="F:System.Diagnostics.CodeAnalysis.StringSyntaxAttribute.NumericFormat">
+            <summary>The syntax identifier for strings containing numeric format specifiers.</summary>
+        </member>
+        <member name="F:System.Diagnostics.CodeAnalysis.StringSyntaxAttribute.Regex">
+            <summary>The syntax identifier for strings containing regular expressions.</summary>
+        </member>
+        <member name="F:System.Diagnostics.CodeAnalysis.StringSyntaxAttribute.TimeOnlyFormat">
+            <summary>The syntax identifier for strings containing time format specifiers.</summary>
+        </member>
+        <member name="F:System.Diagnostics.CodeAnalysis.StringSyntaxAttribute.TimeSpanFormat">
+            <summary>The syntax identifier for strings containing <see cref="T:System.TimeSpan"/> format specifiers.</summary>
+        </member>
+        <member name="F:System.Diagnostics.CodeAnalysis.StringSyntaxAttribute.Uri">
+            <summary>The syntax identifier for strings containing URIs.</summary>
+        </member>
+        <member name="F:System.Diagnostics.CodeAnalysis.StringSyntaxAttribute.Xml">
+            <summary>The syntax identifier for strings containing XML.</summary>
+        </member>
+        <member name="T:System.Diagnostics.CodeAnalysis.UnscopedRefAttribute">
+            <summary>
+            Used to indicate a byref escapes and is not scoped.
+            </summary>
+            <remarks>
+            <para>
+            There are several cases where the C# compiler treats a <see langword="ref"/> as implicitly
+            <see langword="scoped"/> - where the compiler does not allow the <see langword="ref"/> to escape the method.
+            </para>
+            <para>
+            For example:
+            <list type="number">
+                <item><see langword="this"/> for <see langword="struct"/> instance methods.</item>
+                <item><see langword="ref"/> parameters that refer to <see langword="ref"/> <see langword="struct"/> types.</item>
+                <item><see langword="out"/> parameters.</item>
+            </list>
+            </para>
+            <para>
+            This attribute is used in those instances where the <see langword="ref"/> should be allowed to escape.
+            </para>
+            <para>
+            Applying this attribute, in any form, has impact on consumers of the applicable API. It is necessary for
+            API authors to understand the lifetime implications of applying this attribute and how it may impact their users.
+            </para>
+            </remarks>
+        </member>
+        <member name="T:System.Index">
+            <summary>Represent a type can be used to index a collection either from the start or the end.</summary>
+            <remarks>
+            Index is used by the C# compiler to support the new index syntax
+            <code>
+            int[] someArray = new int[5] { 1, 2, 3, 4, 5 } ;
+            int lastElement = someArray[^1]; // lastElement = 5
+            </code>
+            </remarks>
+        </member>
+        <member name="M:System.Index.#ctor(System.Int32,System.Boolean)">
+            <summary>Construct an Index using a value and indicating if the index is from the start or from the end.</summary>
+            <param name="value">The index value. it has to be zero or positive number.</param>
+            <param name="fromEnd">Indicating if the index is from the start or from the end.</param>
+            <remarks>
+            If the Index constructed from the end, index value 1 means pointing at the last element and index value 0 means pointing at beyond last element.
+            </remarks>
+        </member>
+        <member name="P:System.Index.Start">
+            <summary>Create an Index pointing at first element.</summary>
+        </member>
+        <member name="P:System.Index.End">
+            <summary>Create an Index pointing at beyond last element.</summary>
+        </member>
+        <member name="M:System.Index.FromStart(System.Int32)">
+            <summary>Create an Index from the start at the position indicated by the value.</summary>
+            <param name="value">The index value from the start.</param>
+        </member>
+        <member name="M:System.Index.FromEnd(System.Int32)">
+            <summary>Create an Index from the end at the position indicated by the value.</summary>
+            <param name="value">The index value from the end.</param>
+        </member>
+        <member name="P:System.Index.Value">
+            <summary>Returns the index value.</summary>
+        </member>
+        <member name="P:System.Index.IsFromEnd">
+            <summary>Indicates whether the index is from the start or the end.</summary>
+        </member>
+        <member name="M:System.Index.GetOffset(System.Int32)">
+            <summary>Calculate the offset from the start using the giving collection length.</summary>
+            <param name="length">The length of the collection that the Index will be used with. length has to be a positive value</param>
+            <remarks>
+            For performance reason, we don't validate the input length parameter and the returned offset value against negative values.
+            we don't validate either the returned offset is greater than the input length.
+            It is expected Index will be used with collections which always have non negative length/count. If the returned offset is negative and
+            then used to index a collection will get out of range exception which will be same affect as the validation.
+            </remarks>
+        </member>
+        <member name="M:System.Index.Equals(System.Object)">
+            <summary>Indicates whether the current Index object is equal to another object of the same type.</summary>
+            <param name="value">An object to compare with this object</param>
+        </member>
+        <member name="M:System.Index.Equals(System.Index)">
+            <summary>Indicates whether the current Index object is equal to another Index object.</summary>
+            <param name="other">An object to compare with this object</param>
+        </member>
+        <member name="M:System.Index.GetHashCode">
+            <summary>Returns the hash code for this instance.</summary>
+        </member>
+        <member name="M:System.Index.op_Implicit(System.Int32)~System.Index">
+            <summary>Converts integer number to an Index.</summary>
+        </member>
+        <member name="M:System.Index.ToString">
+            <summary>Converts the value of the current Index object to its equivalent string representation.</summary>
+        </member>
+        <member name="T:System.Range">
+            <summary>Represent a range has start and end indexes.</summary>
+            <remarks>
+            Range is used by the C# compiler to support the range syntax.
+            <code>
+            int[] someArray = new int[5] { 1, 2, 3, 4, 5 };
+            int[] subArray1 = someArray[0..2]; // { 1, 2 }
+            int[] subArray2 = someArray[1..^0]; // { 2, 3, 4, 5 }
+            </code>
+            </remarks>
+        </member>
+        <member name="P:System.Range.Start">
+            <summary>Represent the inclusive start index of the Range.</summary>
+        </member>
+        <member name="P:System.Range.End">
+            <summary>Represent the exclusive end index of the Range.</summary>
+        </member>
+        <member name="M:System.Range.#ctor(System.Index,System.Index)">
+            <summary>Construct a Range object using the start and end indexes.</summary>
+            <param name="start">Represent the inclusive start index of the range.</param>
+            <param name="end">Represent the exclusive end index of the range.</param>
+        </member>
+        <member name="M:System.Range.Equals(System.Object)">
+            <summary>Indicates whether the current Range object is equal to another object of the same type.</summary>
+            <param name="value">An object to compare with this object</param>
+        </member>
+        <member name="M:System.Range.Equals(System.Range)">
+            <summary>Indicates whether the current Range object is equal to another Range object.</summary>
+            <param name="other">An object to compare with this object</param>
+        </member>
+        <member name="M:System.Range.GetHashCode">
+            <summary>Returns the hash code for this instance.</summary>
+        </member>
+        <member name="M:System.Range.ToString">
+            <summary>Converts the value of the current Range object to its equivalent string representation.</summary>
+        </member>
+        <member name="M:System.Range.StartAt(System.Index)">
+            <summary>Create a Range object starting from start index to the end of the collection.</summary>
+        </member>
+        <member name="M:System.Range.EndAt(System.Index)">
+            <summary>Create a Range object starting from first element in the collection to the end Index.</summary>
+        </member>
+        <member name="P:System.Range.All">
+            <summary>Create a Range object starting from first element to the end.</summary>
+        </member>
+        <member name="M:System.Range.GetOffsetAndLength(System.Int32)">
+            <summary>Calculate the start offset and length of range object using a collection length.</summary>
+            <param name="length">The length of the collection that the range will be used with. length has to be a positive value.</param>
+            <remarks>
+            For performance reason, we don't validate the input length parameter against negative values.
+            It is expected Range will be used with collections which always have non negative length/count.
+            We validate the range is inside the length scope though.
+            </remarks>
+        </member>
+        <member name="T:System.Runtime.CompilerServices.CallerArgumentExpressionAttribute">
+            <summary>
+            An attribute that allows parameters to receive the expression of other parameters.
+            </summary>
+        </member>
+        <member name="M:System.Runtime.CompilerServices.CallerArgumentExpressionAttribute.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:System.Runtime.CompilerServices.CallerArgumentExpressionAttribute"/> class.
+            </summary>
+            <param name="parameterName">The condition parameter value.</param>
+        </member>
+        <member name="P:System.Runtime.CompilerServices.CallerArgumentExpressionAttribute.ParameterName">
+            <summary>
+            Gets the parameter name the expression is retrieved from.
+            </summary>
+        </member>
+        <member name="M:System.Runtime.CompilerServices.CollectionBuilderAttribute.#ctor(System.Type,System.String)">
+            <summary>
+            Initialize the attribute to refer to the <paramref name="methodName"/> method on the <paramref name="builderType"/> type.
+            </summary>
+            <param name="builderType">The type of the builder to use to construct the collection.</param>
+            <param name="methodName">The name of the method on the builder to use to construct the collection.</param>
+            <remarks>
+            <paramref name="methodName"/> must refer to a static method that accepts a single parameter of
+            type <see cref="T:System.ReadOnlySpan`1"/> and returns an instance of the collection being built containing
+            a copy of the data from that span.  In future releases of .NET, additional patterns may be supported.
+            </remarks>
+        </member>
+        <member name="P:System.Runtime.CompilerServices.CollectionBuilderAttribute.BuilderType">
+            <summary>
+            Gets the type of the builder to use to construct the collection.
+            </summary>
+        </member>
+        <member name="P:System.Runtime.CompilerServices.CollectionBuilderAttribute.MethodName">
+            <summary>
+            Gets the name of the method on the builder to use to construct the collection.
+            </summary>
+            <remarks>
+            This should match the metadata name of the target method.
+            For example, this might be ".ctor" if targeting the type's constructor.
+            </remarks>
+        </member>
+        <member name="T:System.Runtime.CompilerServices.CompilerFeatureRequiredAttribute">
+            <summary>
+            Indicates that compiler support for a particular feature is required for the location where this attribute is applied.
+            </summary>
+        </member>
+        <member name="M:System.Runtime.CompilerServices.CompilerFeatureRequiredAttribute.#ctor(System.String)">
+            <summary>
+            Creates a new instance of the <see cref="T:System.Runtime.CompilerServices.CompilerFeatureRequiredAttribute"/> type.
+            </summary>
+            <param name="featureName">The name of the feature to indicate.</param>
+        </member>
+        <member name="P:System.Runtime.CompilerServices.CompilerFeatureRequiredAttribute.FeatureName">
+            <summary>
+            The name of the compiler feature.
+            </summary>
+        </member>
+        <member name="P:System.Runtime.CompilerServices.CompilerFeatureRequiredAttribute.IsOptional">
+            <summary>
+            If true, the compiler can choose to allow access to the location where this attribute is applied if it does not understand <see cref="P:System.Runtime.CompilerServices.CompilerFeatureRequiredAttribute.FeatureName"/>.
+            </summary>
+        </member>
+        <member name="F:System.Runtime.CompilerServices.CompilerFeatureRequiredAttribute.RefStructs">
+            <summary>
+            The <see cref="P:System.Runtime.CompilerServices.CompilerFeatureRequiredAttribute.FeatureName"/> used for the ref structs C# feature.
+            </summary>
+        </member>
+        <member name="F:System.Runtime.CompilerServices.CompilerFeatureRequiredAttribute.RequiredMembers">
+            <summary>
+            The <see cref="P:System.Runtime.CompilerServices.CompilerFeatureRequiredAttribute.FeatureName"/> used for the required members C# feature.
+            </summary>
+        </member>
+        <member name="T:System.Runtime.CompilerServices.InterpolatedStringHandlerArgumentAttribute">
+            <summary>
+            Indicates which arguments to a method involving an interpolated string handler should be passed to that handler.
+            </summary>
+        </member>
+        <member name="M:System.Runtime.CompilerServices.InterpolatedStringHandlerArgumentAttribute.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:System.Runtime.CompilerServices.InterpolatedStringHandlerArgumentAttribute"/> class.
+            </summary>
+            <param name="argument">The name of the argument that should be passed to the handler.</param>
+            <remarks><see langword="null"/> may be used as the name of the receiver in an instance method.</remarks>
+        </member>
+        <member name="M:System.Runtime.CompilerServices.InterpolatedStringHandlerArgumentAttribute.#ctor(System.String[])">
+            <summary>
+            Initializes a new instance of the <see cref="T:System.Runtime.CompilerServices.InterpolatedStringHandlerArgumentAttribute"/> class.
+            </summary>
+            <param name="arguments">The names of the arguments that should be passed to the handler.</param>
+            <remarks><see langword="null"/> may be used as the name of the receiver in an instance method.</remarks>
+        </member>
+        <member name="P:System.Runtime.CompilerServices.InterpolatedStringHandlerArgumentAttribute.Arguments">
+            <summary>
+            Gets the names of the arguments that should be passed to the handler.
+            </summary>
+            <remarks><see langword="null"/> may be used as the name of the receiver in an instance method.</remarks>
+        </member>
+        <member name="T:System.Runtime.CompilerServices.InterpolatedStringHandlerAttribute">
+            <summary>
+            Indicates the attributed type is to be used as an interpolated string handler.
+            </summary>
+        </member>
+        <member name="T:System.Runtime.CompilerServices.IsExternalInit">
+            <summary>
+            Reserved to be used by the compiler for tracking metadata.
+            This class should not be used by developers in source code.
+            </summary>
+        </member>
+        <member name="T:System.Runtime.CompilerServices.ModuleInitializerAttribute">
+             <summary>
+             Used to indicate to the compiler that a method should be called
+             in its containing module's initializer.
+             </summary>
+             <remarks>
+             When one or more valid methods
+             with this attribute are found in a compilation, the compiler will
+             emit a module initializer which calls each of the attributed methods.
+            
+             Certain requirements are imposed on any method targeted with this attribute:
+             - The method must be `static`.
+             - The method must be an ordinary member method, as opposed to a property accessor, constructor, local function, etc.
+             - The method must be parameterless.
+             - The method must return `void`.
+             - The method must not be generic or be contained in a generic type.
+             - The method's effective accessibility must be `internal` or `public`.
+            
+             The specification for module initializers in the .NET runtime can be found here:
+             https://github.com/dotnet/runtime/blob/main/docs/design/specs/Ecma-335-Augments.md#module-initializer
+             </remarks>
+        </member>
+        <member name="T:System.Runtime.CompilerServices.OverloadResolutionPriorityAttribute">
+            <summary>
+            Specifies the priority of a member in overload resolution. When unspecified, the default priority is 0.
+            </summary>
+        </member>
+        <member name="M:System.Runtime.CompilerServices.OverloadResolutionPriorityAttribute.#ctor(System.Int32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:System.Runtime.CompilerServices.OverloadResolutionPriorityAttribute"/> class.
+            </summary>
+            <param name="priority">The priority of the attributed member. Higher numbers are prioritized, lower numbers are deprioritized. 0 is the default if no attribute is present.</param>
+        </member>
+        <member name="P:System.Runtime.CompilerServices.OverloadResolutionPriorityAttribute.Priority">
+            <summary>
+            The priority of the member.
+            </summary>
+        </member>
+        <member name="T:System.Runtime.CompilerServices.ParamCollectionAttribute">
+            <summary>
+            Indicates that a method will allow a variable number of arguments in its invocation.
+            </summary>
+        </member>
+        <member name="T:System.Runtime.CompilerServices.RequiredMemberAttribute">
+            <summary>
+            Specifies that a type has required members or that a member is required.
+            </summary>
+        </member>
+        <member name="T:System.Runtime.CompilerServices.RequiresLocationAttribute">
+            <summary>
+            Reserved for use by a compiler for tracking metadata.
+            This attribute should not be used by developers in source code.
+            </summary>
+        </member>
+        <member name="T:System.Runtime.CompilerServices.SkipLocalsInitAttribute">
+            <summary>
+            Used to indicate to the compiler that the <c>.locals init</c> flag should not be set in method headers.
+            </summary>
+        </member>
+        <member name="M:System.Runtime.Versioning.RequiresPreviewFeaturesAttribute.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:System.Runtime.Versioning.RequiresPreviewFeaturesAttribute"/> class.
+            </summary>
+        </member>
+        <member name="M:System.Runtime.Versioning.RequiresPreviewFeaturesAttribute.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:System.Runtime.Versioning.RequiresPreviewFeaturesAttribute"/> class with the specified message.
+            </summary>
+            <param name="message">An optional message associated with this attribute instance.</param>
+        </member>
+        <member name="P:System.Runtime.Versioning.RequiresPreviewFeaturesAttribute.Message">
+            <summary>
+            Returns the optional message associated with this attribute instance.
+            </summary>
+        </member>
+        <member name="P:System.Runtime.Versioning.RequiresPreviewFeaturesAttribute.Url">
+            <summary>
+            Returns the optional URL associated with this attribute instance.
+            </summary>
+        </member>
+    </members>
+</doc>

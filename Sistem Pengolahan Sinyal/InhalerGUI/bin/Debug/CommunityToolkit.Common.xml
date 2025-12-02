@@ -1,0 +1,522 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>CommunityToolkit.Common</name>
+    </assembly>
+    <members>
+        <member name="T:CommunityToolkit.Common.Converters">
+            <summary>
+            Set of helpers to convert between data types and notations.
+            </summary>
+        </member>
+        <member name="M:CommunityToolkit.Common.Converters.ToFileSizeString(System.Int64)">
+            <summary>
+            Translate numeric file size in bytes to a human-readable shorter string format.
+            </summary>
+            <param name="size">File size in bytes.</param>
+            <returns>Returns file size short string.</returns>
+        </member>
+        <member name="T:CommunityToolkit.Common.Deferred.DeferredCancelEventArgs">
+            <summary>
+            <see cref="T:CommunityToolkit.Common.Deferred.DeferredEventArgs"/> which can also be canceled.
+            </summary>
+        </member>
+        <member name="P:CommunityToolkit.Common.Deferred.DeferredCancelEventArgs.Cancel">
+            <summary>
+            Gets or sets a value indicating whether the event should be canceled.
+            </summary>
+        </member>
+        <member name="T:CommunityToolkit.Common.Deferred.DeferredEventArgs">
+            <summary>
+            <see cref="T:System.EventArgs"/> which can retrieve a <see cref="T:CommunityToolkit.Common.Deferred.EventDeferral"/> in order to process data asynchronously before an <see cref="T:System.EventHandler"/> completes and returns to the calling control.
+            </summary>
+        </member>
+        <member name="P:CommunityToolkit.Common.Deferred.DeferredEventArgs.Empty">
+            <summary>
+            Gets a new <see cref="T:CommunityToolkit.Common.Deferred.DeferredEventArgs"/> to use in cases where no <see cref="T:System.EventArgs"/> wish to be provided.
+            </summary>
+        </member>
+        <member name="M:CommunityToolkit.Common.Deferred.DeferredEventArgs.GetDeferral">
+            <summary>
+            Returns an <see cref="T:CommunityToolkit.Common.Deferred.EventDeferral"/> which can be completed when deferred event is ready to continue.
+            </summary>
+            <returns><see cref="T:CommunityToolkit.Common.Deferred.EventDeferral"/> instance.</returns>
+        </member>
+        <member name="M:CommunityToolkit.Common.Deferred.DeferredEventArgs.GetCurrentDeferralAndReset">
+            <summary>
+            DO NOT USE - This is a support method used by <see cref="T:CommunityToolkit.Common.Deferred.EventHandlerExtensions"/>. It is public only for
+            additional usage within extensions for the UWP based TypedEventHandler extensions.
+            </summary>
+            <returns>Internal EventDeferral reference</returns>
+        </member>
+        <member name="T:CommunityToolkit.Common.Deferred.EventDeferral">
+            <summary>
+            Deferral handle provided by a <see cref="T:CommunityToolkit.Common.Deferred.DeferredEventArgs"/>.
+            </summary>
+        </member>
+        <member name="M:CommunityToolkit.Common.Deferred.EventDeferral.Complete">
+            <summary>
+            Call when finished with the Deferral.
+            </summary>
+        </member>
+        <member name="M:CommunityToolkit.Common.Deferred.EventDeferral.WaitForCompletion(System.Threading.CancellationToken)">
+            <summary>
+            Waits for the <see cref="T:CommunityToolkit.Common.Deferred.EventDeferral"/> to be completed by the event handler.
+            </summary>
+            <param name="cancellationToken"><see cref="T:System.Threading.CancellationToken"/>.</param>
+            <returns><see cref="T:System.Threading.Tasks.Task"/>.</returns>
+        </member>
+        <member name="M:CommunityToolkit.Common.Deferred.EventDeferral.Dispose">
+            <inheritdoc/>
+        </member>
+        <member name="T:CommunityToolkit.Common.Deferred.EventHandlerExtensions">
+            <summary>
+            Extensions to <see cref="T:System.EventHandler`1"/> for Deferred Events.
+            </summary>
+        </member>
+        <member name="M:CommunityToolkit.Common.Deferred.EventHandlerExtensions.InvokeAsync``1(System.EventHandler{``0},System.Object,``0)">
+            <summary>
+            Use to invoke an async <see cref="T:System.EventHandler`1"/> using <see cref="T:CommunityToolkit.Common.Deferred.DeferredEventArgs"/>.
+            </summary>
+            <typeparam name="T"><see cref="T:System.EventArgs"/> type.</typeparam>
+            <param name="eventHandler"><see cref="T:System.EventHandler`1"/> to be invoked.</param>
+            <param name="sender">Sender of the event.</param>
+            <param name="eventArgs"><see cref="T:System.EventArgs"/> instance.</param>
+            <returns><see cref="T:System.Threading.Tasks.Task"/> to wait on deferred event handler.</returns>
+        </member>
+        <member name="M:CommunityToolkit.Common.Deferred.EventHandlerExtensions.InvokeAsync``1(System.EventHandler{``0},System.Object,``0,System.Threading.CancellationToken)">
+            <summary>
+            Use to invoke an async <see cref="T:System.EventHandler`1"/> using <see cref="T:CommunityToolkit.Common.Deferred.DeferredEventArgs"/> with a <see cref="T:System.Threading.CancellationToken"/>.
+            </summary>
+            <typeparam name="T"><see cref="T:System.EventArgs"/> type.</typeparam>
+            <param name="eventHandler"><see cref="T:System.EventHandler`1"/> to be invoked.</param>
+            <param name="sender">Sender of the event.</param>
+            <param name="eventArgs"><see cref="T:System.EventArgs"/> instance.</param>
+            <param name="cancellationToken"><see cref="T:System.Threading.CancellationToken"/> option.</param>
+            <returns><see cref="T:System.Threading.Tasks.Task"/> to wait on deferred event handler.</returns>
+        </member>
+        <member name="T:CommunityToolkit.Common.ArrayExtensions">
+            <summary>
+            Helpers for working with arrays.
+            </summary>
+        </member>
+        <member name="M:CommunityToolkit.Common.ArrayExtensions.GetColumn``1(``0[][],System.Int32)">
+            <summary>
+            Yields a column from a jagged array.
+            An exception will be thrown if the column is out of bounds, and return default in places where there are no elements from inner arrays.
+            Note: There is no equivalent GetRow method, as you can use array[row] to retrieve.
+            </summary>
+            <typeparam name="T">The element type of the array.</typeparam>
+            <param name="rectarray">The source array.</param>
+            <param name="column">Column record to retrieve, 0-based index.</param>
+            <returns>Yielded enumerable of column elements for given column, and default values for smaller inner arrays.</returns>
+        </member>
+        <member name="M:CommunityToolkit.Common.ArrayExtensions.ToArrayString``1(``0[])">
+            <summary>
+            Returns a simple string representation of an array.
+            </summary>
+            <typeparam name="T">The element type of the array.</typeparam>
+            <param name="array">The source array.</param>
+            <returns>The <see cref="T:System.String"/> representation of the array.</returns>
+        </member>
+        <member name="M:CommunityToolkit.Common.ArrayExtensions.ToArrayString``1(``0[][])">
+            <summary>
+            Returns a simple string representation of a jagged array.
+            </summary>
+            <typeparam name="T">The element type of the array.</typeparam>
+            <param name="mdarray">The source array.</param>
+            <returns>String representation of the array.</returns>
+        </member>
+        <member name="M:CommunityToolkit.Common.ArrayExtensions.ToArrayString``1(``0[0:,0:])">
+            <summary>
+            Returns a simple string representation of a 2D array.
+            </summary>
+            <typeparam name="T">The element type of the array.</typeparam>
+            <param name="array">The source array.</param>
+            <returns>The <see cref="T:System.String"/> representation of the array.</returns>
+        </member>
+        <member name="T:CommunityToolkit.Common.Extensions.ISettingsStorageHelperExtensions">
+            <summary>
+            Helpers methods for working with <see cref="T:CommunityToolkit.Helpers.ISettingsStorageHelper`1"/> implementations.
+            </summary>
+        </member>
+        <member name="M:CommunityToolkit.Common.Extensions.ISettingsStorageHelperExtensions.GetValueOrDefault``2(CommunityToolkit.Helpers.ISettingsStorageHelper{``0},``0,``1)">
+            <summary>
+            Attempts to read the provided key and return the value.
+            If the key is not found, the fallback value will be used instead.
+            </summary>
+            <typeparam name="TKey">The type of key used to lookup the object.</typeparam>
+            <typeparam name="TValue">The type of object value expected.</typeparam>
+            <param name="storageHelper">The storage helper instance fo read from.</param>
+            <param name="key">The key of the target object.</param>
+            <param name="fallback">An alternative value returned if the read fails.</param>
+            <returns>The value of the target object, or the fallback value.</returns>
+        </member>
+        <member name="M:CommunityToolkit.Common.Extensions.ISettingsStorageHelperExtensions.Read``2(CommunityToolkit.Helpers.ISettingsStorageHelper{``0},``0)">
+            <summary>
+            Read the key in the storage helper instance and get the value.
+            </summary>
+            <typeparam name="TKey">The type of key used to lookup the object.</typeparam>
+            <typeparam name="TValue">The type of object value expected.</typeparam>
+            <param name="storageHelper">The storage helper instance fo read from.</param>
+            <param name="key">The key of the target object.</param>
+            <returns>The value of the target object</returns>
+            <exception cref="T:System.Collections.Generic.KeyNotFoundException">Throws when the key is not found in storage.</exception>
+        </member>
+        <member name="M:CommunityToolkit.Common.Extensions.ISettingsStorageHelperExtensions.Delete``1(CommunityToolkit.Helpers.ISettingsStorageHelper{``0},``0)">
+            <summary>
+            Deletes a key from storage.
+            </summary>
+            <typeparam name="TKey">The type of key used to lookup the object.</typeparam>
+            <param name="storageHelper">The storage helper instance to delete from.</param>
+            <param name="key">The key of the target object.</param>
+            <exception cref="T:System.Collections.Generic.KeyNotFoundException">Throws when the key is not found in storage.</exception>
+        </member>
+        <member name="T:CommunityToolkit.Common.StringExtensions">
+            <summary>
+            Helpers for working with strings and string representations.
+            </summary>
+        </member>
+        <member name="F:CommunityToolkit.Common.StringExtensions.PhoneNumberRegex">
+            <summary>
+            Regular expression for matching a phone number.
+            </summary>
+        </member>
+        <member name="F:CommunityToolkit.Common.StringExtensions.CharactersRegex">
+            <summary>
+            Regular expression for matching a string that contains only letters.
+            </summary>
+        </member>
+        <member name="F:CommunityToolkit.Common.StringExtensions.EmailRegex">
+            <summary>
+            Regular expression for matching an email address.
+            </summary>
+            <remarks>General Email Regex (RFC 5322 Official Standard) from https://emailregex.com.</remarks>
+        </member>
+        <member name="F:CommunityToolkit.Common.StringExtensions.RemoveHtmlTagsRegex">
+            <summary>
+            Regular expression of HTML tags to remove.
+            </summary>
+        </member>
+        <member name="F:CommunityToolkit.Common.StringExtensions.RemoveHtmlCommentsRegex">
+            <summary>
+            Regular expression for removing comments from HTML.
+            </summary>
+        </member>
+        <member name="F:CommunityToolkit.Common.StringExtensions.RemoveHtmlScriptsRegex">
+            <summary>
+            Regular expression for removing scripts from HTML.
+            </summary>
+        </member>
+        <member name="F:CommunityToolkit.Common.StringExtensions.RemoveHtmlStylesRegex">
+            <summary>
+            Regular expression for removing styles from HTML.
+            </summary>
+        </member>
+        <member name="M:CommunityToolkit.Common.StringExtensions.IsEmail(System.String)">
+            <summary>
+            Determines whether a string is a valid email address.
+            </summary>
+            <param name="str">The string to test.</param>
+            <returns><c>true</c> for a valid email address; otherwise, <c>false</c>.</returns>
+        </member>
+        <member name="M:CommunityToolkit.Common.StringExtensions.IsDecimal(System.String)">
+            <summary>
+            Determines whether a string is a valid decimal number.
+            </summary>
+            <param name="str">The string to test.</param>
+            <returns><c>true</c> for a valid decimal number; otherwise, <c>false</c>.</returns>
+        </member>
+        <member name="M:CommunityToolkit.Common.StringExtensions.IsNumeric(System.String)">
+            <summary>
+            Determines whether a string is a valid integer.
+            </summary>
+            <param name="str">The string to test.</param>
+            <returns><c>true</c> for a valid integer; otherwise, <c>false</c>.</returns>
+        </member>
+        <member name="M:CommunityToolkit.Common.StringExtensions.IsPhoneNumber(System.String)">
+            <summary>
+            Determines whether a string is a valid phone number.
+            </summary>
+            <param name="str">The string to test.</param>
+            <returns><c>true</c> for a valid phone number; otherwise, <c>false</c>.</returns>
+        </member>
+        <member name="M:CommunityToolkit.Common.StringExtensions.IsCharacterString(System.String)">
+            <summary>
+            Determines whether a string contains only letters.
+            </summary>
+            <param name="str">The string to test.</param>
+            <returns><c>true</c> if the string contains only letters; otherwise, <c>false</c>.</returns>
+        </member>
+        <member name="M:CommunityToolkit.Common.StringExtensions.DecodeHtml(System.String)">
+            <summary>
+            Returns a string with HTML comments, scripts, styles, and tags removed.
+            </summary>
+            <param name="htmlText">HTML string.</param>
+            <returns>Decoded HTML string.</returns>
+        </member>
+        <member name="M:CommunityToolkit.Common.StringExtensions.FixHtml(System.String)">
+            <summary>
+            Returns a string with HTML comments, scripts, and styles removed.
+            </summary>
+            <param name="html">HTML string to fix.</param>
+            <returns>Fixed HTML string.</returns>
+        </member>
+        <member name="M:CommunityToolkit.Common.StringExtensions.Truncate(System.String,System.Int32)">
+            <summary>
+            Truncates a string to the specified length.
+            </summary>
+            <param name="value">The string to be truncated.</param>
+            <param name="length">The maximum length.</param>
+            <returns>Truncated string.</returns>
+        </member>
+        <member name="M:CommunityToolkit.Common.StringExtensions.Truncate(System.String,System.Int32,System.Boolean)">
+            <summary>
+            Truncates a string to the specified length.
+            </summary>
+            <param name="value">The string to be truncated.</param>
+            <param name="length">The maximum length.</param>
+            <param name="ellipsis"><c>true</c> to add ellipsis to the truncated text; otherwise, <c>false</c>.</param>
+            <returns>Truncated string.</returns>
+        </member>
+        <member name="T:CommunityToolkit.Common.TaskExtensions">
+            <summary>
+            Helpers for working with tasks.
+            </summary>
+        </member>
+        <member name="M:CommunityToolkit.Common.TaskExtensions.GetResultOrDefault(System.Threading.Tasks.Task)">
+            <summary>
+            Gets the result of a <see cref="T:System.Threading.Tasks.Task"/> if available, or <see langword="null"/> otherwise.
+            </summary>
+            <param name="task">The input <see cref="T:System.Threading.Tasks.Task"/> instance to get the result for.</param>
+            <returns>The result of <paramref name="task"/> if completed successfully, or <see langword="default"/> otherwise.</returns>
+            <remarks>
+            This method does not block if <paramref name="task"/> has not completed yet. Furthermore, it is not generic
+            and uses reflection to access the <see cref="P:System.Threading.Tasks.Task`1.Result"/> property and boxes the result if it's
+            a value type, which adds overhead. It should only be used when using generics is not possible.
+            </remarks>
+        </member>
+        <member name="M:CommunityToolkit.Common.TaskExtensions.GetResultOrDefault``1(System.Threading.Tasks.Task{``0})">
+            <summary>
+            Gets the result of a <see cref="T:System.Threading.Tasks.Task`1"/> if available, or <see langword="default"/> otherwise.
+            </summary>
+            <typeparam name="T">The type of <see cref="T:System.Threading.Tasks.Task`1"/> to get the result for.</typeparam>
+            <param name="task">The input <see cref="T:System.Threading.Tasks.Task`1"/> instance to get the result for.</param>
+            <returns>The result of <paramref name="task"/> if completed successfully, or <see langword="default"/> otherwise.</returns>
+            <remarks>This method does not block if <paramref name="task"/> has not completed yet.</remarks>
+        </member>
+        <member name="T:CommunityToolkit.Common.Helpers.DirectoryItemType">
+            <summary>
+            Represents the types of items available in a directory.
+            </summary>
+        </member>
+        <member name="F:CommunityToolkit.Common.Helpers.DirectoryItemType.None">
+            <summary>
+            The item is neither a file or a folder.
+            </summary>
+        </member>
+        <member name="F:CommunityToolkit.Common.Helpers.DirectoryItemType.File">
+            <summary>
+            Represents a file type item.
+            </summary>
+        </member>
+        <member name="F:CommunityToolkit.Common.Helpers.DirectoryItemType.Folder">
+            <summary>
+            Represents a folder type item.
+            </summary>
+        </member>
+        <member name="T:CommunityToolkit.Common.Helpers.IFileStorageHelper">
+             <summary>
+             Service interface used to store data in a directory/file-system via files and folders.
+            
+             This interface is meant to help abstract file storage operations across platforms in a library,
+             but the actual behavior will be up to the implementer. Such as, we don't provide a sense of a current directory,
+             so an implementor should consider using full paths to support any file operations. Otherwise, a "directory aware"
+             implementation could be achieved with a current directory field and traversal functions, in which case relative paths would be applicable.
+             </summary>
+        </member>
+        <member name="M:CommunityToolkit.Common.Helpers.IFileStorageHelper.ReadFileAsync``1(System.String,``0)">
+            <summary>
+            Retrieves an object from a file.
+            </summary>
+            <typeparam name="T">Type of object retrieved.</typeparam>
+            <param name="filePath">Path to the file that contains the object.</param>
+            <param name="default">Default value of the object.</param>
+            <returns>Waiting task until completion with the object in the file.</returns>
+        </member>
+        <member name="M:CommunityToolkit.Common.Helpers.IFileStorageHelper.ReadFolderAsync(System.String)">
+            <summary>
+            Retrieves the listings for a folder and the item types.
+            </summary>
+            <param name="folderPath">The path to the target folder.</param>
+            <returns>A list of item types and names in the target folder.</returns>
+        </member>
+        <member name="M:CommunityToolkit.Common.Helpers.IFileStorageHelper.CreateFileAsync``1(System.String,``0)">
+            <summary>
+            Saves an object inside a file.
+            </summary>
+            <typeparam name="T">Type of object saved.</typeparam>
+            <param name="filePath">Path to the file that will contain the object.</param>
+            <param name="value">Object to save.</param>
+            <returns>Waiting task until completion.</returns>
+        </member>
+        <member name="M:CommunityToolkit.Common.Helpers.IFileStorageHelper.CreateFolderAsync(System.String)">
+            <summary>
+            Ensure a folder exists at the folder path specified.
+            </summary>
+            <param name="folderPath">The path and name of the target folder.</param>
+            <returns>Waiting task until completion.</returns>
+        </member>
+        <member name="M:CommunityToolkit.Common.Helpers.IFileStorageHelper.TryDeleteItemAsync(System.String)">
+            <summary>
+            Deletes a file or folder item.
+            </summary>
+            <param name="itemPath">The path to the item for deletion.</param>
+            <returns>Waiting task until completion.</returns>
+        </member>
+        <member name="M:CommunityToolkit.Common.Helpers.IFileStorageHelper.TryRenameItemAsync(System.String,System.String)">
+            <summary>
+            Rename an item.
+            </summary>
+            <param name="itemPath">The path to the target item.</param>
+            <param name="newName">The new nam for the target item.</param>
+            <returns>Waiting task until completion.</returns>
+        </member>
+        <member name="T:CommunityToolkit.Common.Helpers.IObjectSerializer">
+            <summary>
+            A basic serialization service.
+            </summary>
+        </member>
+        <member name="M:CommunityToolkit.Common.Helpers.IObjectSerializer.Serialize``1(``0)">
+            <summary>
+            Serialize an object into a string. It is recommended to use strings as the final format for objects.
+            </summary>
+            <typeparam name="T">The type of the object to serialize.</typeparam>
+            <param name="value">The object to serialize.</param>
+            <returns>The serialized object.</returns>
+        </member>
+        <member name="M:CommunityToolkit.Common.Helpers.IObjectSerializer.Deserialize``1(System.String)">
+            <summary>
+            Deserialize string into an object of the given type.
+            </summary>
+            <typeparam name="T">The type of the deserialized object.</typeparam>
+            <param name="value">The string to deserialize.</param>
+            <returns>The deserialized object.</returns>
+        </member>
+        <member name="T:CommunityToolkit.Common.Helpers.SystemSerializer">
+            <summary>
+            A bare-bones serializer which knows how to deal with primitive types and strings only.
+            It is recommended for more complex scenarios to implement your own <see cref="T:CommunityToolkit.Common.Helpers.IObjectSerializer"/> based on System.Text.Json, Newtonsoft.Json, or DataContractJsonSerializer see https://aka.ms/wct/storagehelper-migration
+            </summary>
+        </member>
+        <member name="M:CommunityToolkit.Common.Helpers.SystemSerializer.Deserialize``1(System.String)">
+            <summary>
+            Take a primitive value from storage and return it as the requested type using the <see cref="M:System.Convert.ChangeType(System.Object,System.Type)"/> API.
+            </summary>
+            <typeparam name="T">Type to convert value to.</typeparam>
+            <param name="value">Value from storage to convert.</param>
+            <returns>Deserialized value or default value.</returns>
+        </member>
+        <member name="M:CommunityToolkit.Common.Helpers.SystemSerializer.Serialize``1(``0)">
+            <summary>
+            Returns the value so that it can be serialized directly.
+            </summary>
+            <typeparam name="T">Type to serialize from.</typeparam>
+            <param name="value">Value to serialize.</param>
+            <returns>String representation of value.</returns>
+        </member>
+        <member name="T:CommunityToolkit.Common.Collections.IIncrementalSource`1">
+            <summary>
+            This interface represents a data source whose items can be loaded incrementally.
+            </summary>
+            <typeparam name="TSource">Type of collection element.</typeparam>
+        </member>
+        <member name="M:CommunityToolkit.Common.Collections.IIncrementalSource`1.GetPagedItemsAsync(System.Int32,System.Int32,System.Threading.CancellationToken)">
+            <summary>
+            This method is invoked every time the view need to show more items. Retrieves items based on <paramref name="pageIndex"/> and <paramref name="pageSize"/> arguments.
+            </summary>
+            <param name="pageIndex">
+            The zero-based index of the page that corresponds to the items to retrieve.
+            </param>
+            <param name="pageSize">
+            The number of <typeparamref name="TSource"/> items to retrieve for the specified <paramref name="pageIndex"/>.
+            </param>
+            <param name="cancellationToken">
+            Used to propagate notification that operation should be canceled.
+            </param>
+            <returns>
+            Returns a collection of <typeparamref name="TSource"/>.
+            </returns>
+        </member>
+        <member name="T:CommunityToolkit.Helpers.ISettingsStorageHelper`1">
+            <summary>
+            Service interface used to store data using key value pairs.
+            </summary>
+            <typeparam name="TKey">The type of keys to use for accessing values.</typeparam>
+        </member>
+        <member name="M:CommunityToolkit.Helpers.ISettingsStorageHelper`1.TryRead``1(`0,``0@)">
+            <summary>
+            Retrieves a single item by its key.
+            </summary>
+            <typeparam name="TValue">Type of object retrieved.</typeparam>
+            <param name="key">Key of the object.</param>
+            <param name="value">The <see typeparamref="TValue"/> object for <see typeparamref="TKey"/> key.</param>
+            <returns>A boolean indicator of success.</returns>
+        </member>
+        <member name="M:CommunityToolkit.Helpers.ISettingsStorageHelper`1.Save``1(`0,``0)">
+            <summary>
+            Saves a single item by its key.
+            </summary>
+            <typeparam name="TValue">Type of object saved.</typeparam>
+            <param name="key">Key of the value saved.</param>
+            <param name="value">Object to save.</param>
+        </member>
+        <member name="M:CommunityToolkit.Helpers.ISettingsStorageHelper`1.TryDelete(`0)">
+            <summary>
+            Deletes a single item by its key.
+            </summary>
+            <param name="key">Key of the object.</param>
+            <returns>A boolean indicator of success.</returns>
+        </member>
+        <member name="M:CommunityToolkit.Helpers.ISettingsStorageHelper`1.Clear">
+            <summary>
+            Clear all keys and values from the settings store.
+            </summary>
+        </member>
+        <member name="T:System.Diagnostics.CodeAnalysis.NotNullIfNotNullAttribute">
+            <summary>
+            Specifies that the output will be non-null if the named parameter is non-null.
+            </summary>
+        </member>
+        <member name="M:System.Diagnostics.CodeAnalysis.NotNullIfNotNullAttribute.#ctor(System.String)">
+            <summary>
+            Initializes the attribute with the associated parameter name.
+            </summary>
+            <param name="parameterName">The associated parameter name. The output will be non-null if the argument to the parameter specified is non-null.</param>
+        </member>
+        <member name="P:System.Diagnostics.CodeAnalysis.NotNullIfNotNullAttribute.ParameterName">
+            <summary>
+            Gets the associated parameter name.
+            </summary>
+        </member>
+        <member name="T:System.Diagnostics.CodeAnalysis.NotNullWhenAttribute">
+            <summary>
+            Specifies that when a method returns <see cref="P:System.Diagnostics.CodeAnalysis.NotNullWhenAttribute.ReturnValue"/>, the parameter will not be null even if the corresponding type allows it.
+            </summary>
+        </member>
+        <member name="M:System.Diagnostics.CodeAnalysis.NotNullWhenAttribute.#ctor(System.Boolean)">
+            <summary>
+            Initializes the attribute with the specified return value condition.
+            </summary>
+            <param name="returnValue">The return value condition. If the method returns this value, the associated parameter will not be null.</param>
+        </member>
+        <member name="P:System.Diagnostics.CodeAnalysis.NotNullWhenAttribute.ReturnValue">
+            <summary>Gets the return value condition.</summary>
+        </member>
+        <member name="T:System.Runtime.CompilerServices.SkipLocalsInitAttribute">
+            <summary>
+            Used to indicate to the compiler that the <c>.locals init</c> flag should not be set in method headers.
+            </summary>
+        </member>
+    </members>
+</doc>
